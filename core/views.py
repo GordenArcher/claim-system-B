@@ -12,12 +12,13 @@ from .serializers import ClaimSerializer, StaffSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
 from django.db.models import Q
-from datetime import datetime
+from django.utils import timezone
 from django.utils.timezone import now
 from django.contrib.auth import get_user_model
 import random
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
+import requests
 
 
 @ensure_csrf_cookie
@@ -426,67 +427,76 @@ def get_staff_claims(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+
+HUTBUL_SENDER_ID = "glcxnwfw"
+
+def send_sms(phone_number, message):
+    url = "https://smsc.hubtel.com/v1/messages/send"
+    params = {
+        "clientsecret": "tvjaurmu",
+        "clientid": "tquahyvu",
+        "from": "Claim",
+        "to": phone_number,
+        "content": message
+    }
+
+    try:
+        response = requests.get(url, params=params)
+        response_data = response.json()
+
+        if response.status_code == 200 and response_data.get("status") == "Success":
+            return True
+        else:
+            print(f"Failed to send SMS: {response_data}")
+            return False
+    except Exception as e:
+        print(f"Error sending SMS: {str(e)}")
+        return False
+    
+
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def set_claim_to_paid(request, claim_number):
-    verify_claim = get_object_or_404(Claim, claim_number=claim_number)
-
-    try:
-        verify_claim.status = "paid"
-        verify_claim.save()
-
-        return Response({
-            "status":"success",
-            "message":"Claim status updated to Paid",
-        }, status=status.HTTP_200_OK)
-    
-    except Exception as e:
-        return Response({
-            "status":"error",
-            "message":f"{e}",
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-
-
-@api_view(['POST'])
 def pay_claim(request, claim_number):
-    staff_phone = request.data.get('staff_phone')
-
     try:
         claim = Claim.objects.get(claim_number=claim_number)
-
+        
         if claim.status == "Paid":
-            return Response({"status": "error", "message": "Claim has already been paid."}, status=status.HTTP_400_BAD_REQUEST)
-
+            return Response({
+                "status": "error", 
+                 "message": "Claim has already been paid."
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        if hasattr(claim, "staff") and claim.staff and claim.staff.phone_number:
+            staff_phone = claim.staff.phone_number
+        else:
+            return Response({
+                "status": "error", 
+                "message": "Staff phone number not found for this claim."
+            },status=status.HTTP_400_BAD_REQUEST)
+        
         claim.status = "paid"
-        claim.payment_date = datetime.now()
+        claim.payment_date = timezone.now()
         claim.save()
-
-        # Send SMS notification to staff
-        # client = Client()  # Initialize Twilio client
-        # message = client.messages.create(
-        #     to=staff_phone,
-        #     from_="your_twilio_number",
-        #     body=f"Your claim {claim_number} has been successfully processed and payment is on the way!"
-        # )
-
-        # # Send SMS notification to accountant
-        # # You could hardcode or dynamically fetch the accountant's phone number
-        # accountant_phone = "accountant_phone_number"
-        # message_to_accountant = client.messages.create(
-        #     to=accountant_phone,
-        #     from_="your_twilio_number",
-        #     body=f"Claim {claim_number} for staff {staff_id} has been processed successfully."
-        # )
-
+        
+        staff_message = f"Dear {claim.staff.employee.first_name}, your claim (#{claim_number}) of {claim.amount} has been successfully processed. Payment is on the way!"
+        send_sms(staff_phone, staff_message)
+        
+        accountant = Staff.objects.filter(employee=request.user).first()
+        if accountant and accountant.phone_number:
+            accountant_message = f"Payment of {claim.amount} for {accountant.employee.first_name} {accountant.employee.last_name} (Claim #{claim_number}, Phone: {staff_phone}) has been successfully processed."
+            send_sms(accountant.phone_number, accountant_message)
+        
         return Response({
             "status": "success",
             "message": "Claim paid successfully. SMS notifications sent."
         }, status=status.HTTP_200_OK)
-
+        
     except Claim.DoesNotExist:
-        return Response({"status": "error", "message": "Claim not found."}, status=status.HTTP_404_NOT_FOUND)
-
+        return Response({
+            "status": "error", 
+            "message": "Claim not found."
+            },status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return Response({
             "status": "error", 

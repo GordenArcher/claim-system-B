@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
 # Create your models here.
 class Staff(models.Model):
@@ -9,7 +10,12 @@ class Staff(models.Model):
     )
     employee = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     staff_id = models.CharField(max_length=20, unique=True) 
-    phone_number = models.IntegerField(unique=True, null=True)
+    phone_regex = RegexValidator(
+        regex=r'^\+?1?\d{9,15}$',
+        message="Phone number must be entered in the format: '+233XXXXXXXXX'. Up to 15 digits allowed."
+    )
+    phone_number = models.CharField(validators=[phone_regex], max_length=15, unique=True, null=True)
+
     role = models.CharField(max_length=20, choices=USER_ROLES, default='staff')
 
     def __str__(self):
