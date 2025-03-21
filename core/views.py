@@ -387,6 +387,13 @@ def verify_staff_claim(request, claim_number):
             "message":"Claim retrieved",
             "data": claim_Serializer.data
         }, status=status.HTTP_200_OK)
+
+
+    except Claim.DoesNotExist:
+        return Response({
+            "status": "error",
+            "message": "Claim not found",
+        }, status=status.HTTP_404_NOT_FOUND)    
     
     except Exception as e:
         return Response({
