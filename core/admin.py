@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Staff, Claim
+from .models import Staff, Claim, Payments
 
 # Register your models here.
 class StaffAdmin(admin.ModelAdmin):
-    list_display = ['employee', 'staff_id', 'phone_number', 'role']
-    search_fields = ['employee', 'staff_id', 'phone_number', 'role']
+    list_display = ['employee', 'staff_id', 'phone_number', 'role', 'is_blocked']
+    search_fields = ['employee', 'staff_id', 'phone_number', 'role', 'is_blocked']
     
 
     def __str__(self):
@@ -21,5 +21,14 @@ class ClaimAdmin(admin.ModelAdmin):
         return f"{self.staff.username} claimed {self.amount}"
     
 
+
+class PaymentsAdmin(admin.ModelAdmin):
+    list_display = ['payment_id', 'claim', 'paid_by', 'paid_at']
+    search_fields = ['payment_id', 'claim', 'paid_by', 'paid_at']
+
+
+    
+
 admin.site.register(Staff, StaffAdmin)    
 admin.site.register(Claim, ClaimAdmin)    
+admin.site.register(Payments, PaymentsAdmin)    

@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Claim, Staff
+from .models import Claim, Staff, Payments
 from .serializers import ClaimSerializer, StaffSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
@@ -19,6 +19,12 @@ import random
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
 import requests
+from datetime import datetime, timedelta
+from django.db.models import Sum
+from django.db.models.functions import TruncMonth
+from django.db.models import Count
+from django.db.models.functions import ExtractWeekDay
+from django.db.models import Avg, F, ExpressionWrapper, fields
 
 
 @ensure_csrf_cookie
@@ -40,7 +46,7 @@ def register(request):
     last_name = data.get("last_name")
     email = data.get("email")
     phone_number = data.get("phone_number")
-    role = data.get("role", "staff")
+    role = data.get("role")
     password = data.get("password")
     password2 = data.get("password2")
     
@@ -67,7 +73,7 @@ def register(request):
         }, status=status.HTTP_400_BAD_REQUEST)
 
     try:
-        user = User.objects.create_user(username=first_name, email=email, password=password, first_name=first_name, last_name=last_name)
+        user = User.objects.create_user(username=f"{first_name}_{last_name}", email=email, password=password, first_name=first_name, last_name=last_name)
 
         # Generate unique staff ID (e.g., ST-123456)
         staff_id = f"ST-{random.randint(100000, 999999)}"
@@ -335,13 +341,15 @@ def create_claim(request):
 def get_all_pending_claims(request):
     try:
         all_pending_claims = Claim.objects.filter(status='pending').order_by('-created_at')
+        total_pending_claims = Claim.objects.filter(status='pending').count()
 
         claim_serializer = ClaimSerializer(all_pending_claims, many=True)
 
         return Response({
             "status":"success",
             "message":"pending claim retrieved sucessfully",
-            "data": claim_serializer.data
+            "data": claim_serializer.data,
+            "total_pending_claims": total_pending_claims
         }, status=status.HTTP_200_OK)
  
     except Exception as e:
@@ -357,13 +365,15 @@ def get_all_pending_claims(request):
 def get_all_claims(request):
     try:
         all_claims = Claim.objects.all().order_by('-created_at')
+        total_claims = Claim.objects.all().count()
 
         claim_serializer = ClaimSerializer(all_claims, many=True)
 
         return Response({
             "status":"success",
             "message":"claim retrieved",
-            "data": claim_serializer.data
+            "data": claim_serializer.data,
+            "total_claims": total_claims
         }, status=status.HTTP_200_OK)
  
     except Exception as e:
@@ -372,6 +382,31 @@ def get_all_claims(request):
             "message":f"{e}",
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
+
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_recent_claims(request):
+    try:
+        # Get the last 10 recent claims
+        recent_10_claims = Claim.objects.all().order_by('-created_at')[:10]
+
+        claim_serializer = ClaimSerializer(recent_10_claims, many=True)
+
+        return Response({
+            "status":"success",
+            "message":"claim retrieved",
+            "data": claim_serializer.data,
+        }, status=status.HTTP_200_OK)
+ 
+    except Exception as e:
+        return Response({
+            "status":"error",
+            "message":f"{e}",
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
 
 
 @api_view(['GET'])
@@ -411,21 +446,29 @@ def get_staff_claims(request):
     try:
         staff = get_object_or_404(Staff, employee=request.user)
 
-        get_claims = Claim.objects.filter(staff=staff)
+        if staff:
+            get_claims = Claim.objects.filter(staff=staff)
 
-        if not get_claims.exists():
+            if not get_claims.exists():
+                return Response({
+                    "status": "error",
+                    "message": "No claims found for this staff"
+                }, status=status.HTTP_404_NOT_FOUND)
+
+            claims_serializer = ClaimSerializer(get_claims, many=True)
+
+            return Response({
+                "status": "success",
+                "message": "Claims retrieved",
+                "data": claims_serializer.data
+            }, status=status.HTTP_200_OK)
+        
+        else:
             return Response({
                 "status": "error",
-                "message": "No claims found for this staff"
-            }, status=status.HTTP_404_NOT_FOUND)
+                "message": f"staff not found",
+            }, status=status.HTTP_400_BAD_REQUEST)
 
-        claims_serializer = ClaimSerializer(get_claims, many=True)
-
-        return Response({
-            "status": "success",
-            "message": "Claims retrieved",
-            "data": claims_serializer.data
-        }, status=status.HTTP_200_OK)
     
     except Exception as e:
         return Response({
@@ -470,7 +513,7 @@ def pay_claim(request, claim_number):
         
         if claim.status == "Paid":
             return Response({
-                "status": "error", 
+                "status": "error",
                  "message": "Claim has already been paid."
             }, status=status.HTTP_400_BAD_REQUEST)
         
@@ -486,12 +529,19 @@ def pay_claim(request, claim_number):
         claim.payment_date = timezone.now()
         claim.save()
         
-        staff_message = f"Dear {claim.staff.employee.first_name}, your claim (#{claim_number}) of {claim.amount} has been successfully processed. Payment is on the way!"
+        # Send SMS to the Staff
+        staff_message = f"Dear {claim.staff.employee.first_name}, your claim (#{claim_number}) of {claim.amount} has been successfully processed on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}. Payment is on the way!"
         send_sms(staff_phone, staff_message)
-        
+
+        # Send SMS to the accountant
         accountant = Staff.objects.filter(employee=request.user).first()
         if accountant and accountant.phone_number:
-            accountant_message = f"Payment of {claim.amount} for {accountant.employee.first_name} {accountant.employee.last_name} (Claim #{claim_number}, Phone: {staff_phone}) has been successfully processed."
+            accountant_message = (
+                f"Payment of {claim.amount} for {claim.staff.employee.first_name} "
+                f"{claim.staff.employee.last_name} (Claim #{claim_number}, Phone: {staff_phone}) "
+                f"has been successfully processed on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} "
+                f"by {accountant.employee.first_name} {accountant.employee.last_name}."
+            )
             send_sms(accountant.phone_number, accountant_message)
         
         return Response({
@@ -583,7 +633,6 @@ def get_all_payments(request):
 
 
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def change_profile(request):
@@ -612,7 +661,7 @@ def change_profile(request):
         request.user.last_name = last_name
         request.user.save()
 
-        new_phone = Staff.objects.update_or_create(employee=request.user, defaults={"phone_number": phone_number},)
+        Staff.objects.update_or_create(employee=request.user, defaults={"phone_number": phone_number},)
 
         return Response({
             "status":"success",
@@ -632,15 +681,16 @@ def change_profile(request):
 def change_password(request):
     data = request.data
 
-    old_password = data.get("old_password")
+    staff_email = data.get("email")
     new_password = data.get("new_password")
     new_password2 = data.get("new_password2")
 
     try:
-        if not request.user.check_password(old_password):
+
+        if not all(staff_email, new_password, new_password2):
             return Response({
-                "status": "error",
-                "message": "The old password is incorrect"
+                "status":"success",
+                "message":"All fields are required"
             }, status=status.HTTP_400_BAD_REQUEST)
 
         if new_password != new_password2:
@@ -648,20 +698,25 @@ def change_password(request):
                 "status": "error",
                 "message": "The new passwords do not match"
             }, status=status.HTTP_400_BAD_REQUEST)
+        
 
-        if old_password == new_password:
+        user = User.objects.get(email=staff_email)
+
+        if user:
+            user.password = new_password
+
             return Response({
-                "status": "error",
-                "message": "The new password cannot be the same as the old password"
-            }, status=status.HTTP_400_BAD_REQUEST)
+                "status":"success",
+                "message":f"Password has been changed for {user.first_name} {user.last_name}"
+            }, status=status.HTTP_200_OK)
 
-        request.user.set_password(new_password)
-        request.user.save()
-
-        return Response({
-            "status": "success",
-            "message": "Password updated successfully"
-        }, status=status.HTTP_200_OK)
+        else:
+            return Response({
+                "status":"error",
+                "message":"Email does not exists"
+            }, status=status.HTTP_400_BAD_REQUEST)    
+            
+        
 
     except Exception as e:
         return Response({
@@ -669,7 +724,6 @@ def change_password(request):
             "message": f"An error occurred: {str(e)}"
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
-
 
 
 @api_view(['GET'])
@@ -694,7 +748,8 @@ def get_user_details(request):
                 'email': user.email,
                 'staff_id': staff_id,
                 'phone_number': phone_number,
-                'role': role
+                'role': role,
+                'has_access': staff.is_blocked
             }
         }, status=200)
 
@@ -703,3 +758,265 @@ def get_user_details(request):
             "status": "error",
             "message": f"An error occurred: {str(e)}"
         }, status=500)
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_all_users(request):
+    try:
+        
+        users = Staff.objects.all()
+
+        staff_serializers = StaffSerializer(users, many=True)
+
+        return Response({
+            "status":"success",
+            "message":"retrieved",
+            "data": staff_serializers.data
+        }, status=status.HTTP_200_OK)
+        
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": f"An error occurred: {str(e)}"
+        }, status=500)
+
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_staff(request, staff_id):
+    try:
+
+        staff = Staff.objects.get(staff_id=staff_id)
+        staff_name_f = staff.employee.first_name
+        staff_name_l = staff.employee.last_name
+        user = staff.employee
+
+        staff.delete()
+        user.delete()
+
+        return Response({
+            "status":"success",
+            "message":f"{staff_name_f} {staff_name_l} has been deleted"
+        }, status=status.HTTP_200_OK)
+
+
+    except Staff.DoesNotExist:
+        return Response({
+            "status": "error",
+            "message": "Staff does not exist."
+        }, status=status.HTTP_404_NOT_FOUND)        
+
+    except Exception as e:
+        return Response({
+            "status": "error", 
+            "message": f"An error occurred: {str(e)}"
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def block_staff(request, staff_id):
+    try:
+
+        staff = Staff.objects.get(staff_id=staff_id)
+        staff.is_blocked = True 
+        staff.save()
+
+        staff_name_f = staff.employee.first_name
+        staff_name_l = staff.employee.last_name
+
+        return Response({
+            "status":"success",
+            "message":f"{staff_name_f} {staff_name_l} has been blocked"
+        }, status=status.HTTP_200_OK)
+
+    except Staff.DoesNotExist:
+        return Response({
+            "status": "error",
+            "message": "Staff does not exist."
+        }, status=status.HTTP_404_NOT_FOUND)        
+
+    except Exception as e:
+        return Response({
+            "status": "error", 
+            "message": f"An error occurred: {str(e)}"
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def unblock_staff(request, staff_id):
+    try:
+
+        staff = Staff.objects.get(staff_id=staff_id)
+        staff.is_blocked = False 
+        staff.save()
+
+        staff_name_f = staff.employee.first_name
+        staff_name_l = staff.employee.last_name
+
+        return Response({
+            "status":"success",
+            "message":f"{staff_name_f} {staff_name_l} has been unblocked"
+        }, status=status.HTTP_200_OK)
+
+    except Staff.DoesNotExist:
+        return Response({
+            "status": "error",
+            "message": "Staff does not exist."
+        }, status=status.HTTP_404_NOT_FOUND)        
+
+    except Exception as e:
+        return Response({
+            "status": "error", 
+            "message": f"An error occurred: {str(e)}"
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+
+
+
+# Get payments by month (for the last 6 months)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_monthly_payments(request):
+    try:
+        six_months_ago = datetime.now() - timedelta(days=180)
+        
+        monthly_payments = Payments.objects.filter(
+            paid_at__gte=six_months_ago
+        ).annotate(
+            month=TruncMonth('paid_at')
+        ).values('month').annotate(
+            amount=Sum('claim__amount')
+        ).order_by('month')
+        
+        result = []
+        for item in monthly_payments:
+            result.append({
+                'month': item['month'].strftime('%b'),
+                'amount': float(item['amount'])
+            })
+        
+        return Response({
+            "status":"success",
+            "message":"",
+            "data":result
+        }, status=status.HTTP_200_OK)
+    
+    
+    except Exception as e:
+        return Response({
+            "status":"error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_claims_by_status(request):
+    try:
+        status_counts = Claim.objects.values('status').annotate(
+            value=Count('id')
+        ).order_by('status')
+        
+        total_claims = Claim.objects.count()
+        
+        result = []
+        for item in status_counts:
+            status_name = dict(Claim.STATUS_CHOICES).get(item['status'], item['status'])
+            percentage = (item['value'] / total_claims) * 100 if total_claims > 0 else 0
+            
+            result.append({
+                'name': status_name,
+                'value': percentage
+            })
+        
+        return Response({'data': result, 'total_claims': total_claims})
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+    
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_processing_time_by_day(request):
+    try:
+        processing_time = Claim.objects.filter(
+            status='paid',
+            payment_date__isnull=False
+        ).annotate(
+            day_of_week=ExtractWeekDay('created_at'),
+            process_time=ExpressionWrapper(
+                F('payment_date') - F('created_at'),
+                output_field=fields.DurationField()
+            )
+        )
+        
+        day_averages = processing_time.values('day_of_week').annotate(
+            avg_days=Avg(ExpressionWrapper(
+                F('process_time') / timedelta(days=1),
+                output_field=fields.FloatField()
+            ))
+        ).order_by('day_of_week')
+        
+        day_map = {
+            1: 'Sun', 2: 'Mon', 3: 'Tue', 4: 'Wed', 5: 'Thu', 6: 'Fri', 7: 'Sat'
+        }
+        
+        result = []
+        for item in day_averages:
+            result.append({
+                'day': day_map.get(item['day_of_week'], f"Day {item['day_of_week']}"),
+                'time': round(item['avg_days'], 1)
+            })
+        
+        return Response({
+            "status":"success",
+            "message":"",
+            "data": result
+        }, status=status.HTTP_200_OK)
+    
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_claims_summary(request):
+    try:
+        total_payments = Payments.objects.count()
+        total_amount_paid = Claim.objects.filter(status='paid').aggregate(
+            total=Sum('amount')
+        )['total'] or 0
+        
+        avg_claim_amount = Claim.objects.aggregate(
+            avg=Avg('amount')
+        )['avg'] or 0
+        
+        pending_count = Claim.objects.filter(status='pending').count()
+        approved_count = Claim.objects.filter(status='approved').count()
+        paid_count = Claim.objects.filter(status='paid').count()
+        
+        total_claims = Claim.objects.count()
+        approval_rate = (approved_count + paid_count) / total_claims * 100 if total_claims > 0 else 0
+        payment_rate = paid_count / total_claims * 100 if total_claims > 0 else 0
+        
+        return Response({
+            'total_payments': total_payments,
+            'total_amount_paid': float(total_amount_paid),
+            'avg_claim_amount': float(avg_claim_amount),
+            'pending_count': pending_count,
+            'approved_count': approved_count,
+            'paid_count': paid_count,
+            'approval_rate': round(approval_rate, 1),
+            'payment_rate': round(payment_rate, 1)
+        })
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)

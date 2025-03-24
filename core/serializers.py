@@ -14,7 +14,7 @@ class StaffSerializer(serializers.ModelSerializer):
     employee = EmployeeSerializer()
     class Meta:
         model = Staff
-        fields = ['employee', 'staff_id', 'phone_number', 'role']
+        fields = ['employee', 'staff_id', 'phone_number', 'role', 'is_blocked']
 
 
 class ClaimSerializer(serializers.ModelSerializer):

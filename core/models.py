@@ -5,8 +5,9 @@ from django.core.validators import RegexValidator
 # Create your models here.
 class Staff(models.Model):
     USER_ROLES = (
-        ('staff', 'Staff'),
         ('accountant', 'Accountant'),
+        ('administrator', 'Administrator'),
+        ('main_administrator', 'Main_Administrator'),
     )
     employee = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     staff_id = models.CharField(max_length=20, unique=True) 
@@ -15,8 +16,8 @@ class Staff(models.Model):
         message="Phone number must be entered in the format: '+233XXXXXXXXX'. Up to 15 digits allowed."
     )
     phone_number = models.CharField(validators=[phone_regex], max_length=15, unique=True, null=True)
-
-    role = models.CharField(max_length=20, choices=USER_ROLES, default='staff')
+    role = models.CharField(max_length=20, choices=USER_ROLES, default='accountant')
+    is_blocked = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return f"{self.employee.username}"
@@ -40,3 +41,14 @@ class Claim(models.Model):
 
     def __str__(self):
         return f"Claim {self.claim_number} - {self.staff.staff_id} ({self.status})"
+
+
+
+class Payments(models.Model):
+    payment_id = models.AutoField(primary_key=True)
+    claim = models.ForeignKey(Claim, on_delete=models.CASCADE, related_name='payment_history')
+    paid_by = models.ForeignKey(Staff, on_delete=models.CASCADE, related_name='payments')
+    paid_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Payment {self.payment_id} for Claim {self.claim.claim_number}"
