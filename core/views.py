@@ -528,13 +528,18 @@ def pay_claim(request, claim_number):
         claim.status = "paid"
         claim.payment_date = timezone.now()
         claim.save()
+
+        accountant = Staff.objects.filter(employee=request.user).first()
+
+        payment = Payments.objects.create(claim=claim, paid_by=accountant)
+        payment.save()
         
         # Send SMS to the Staff
         staff_message = f"Dear {claim.staff.employee.first_name}, your claim (#{claim_number}) of {claim.amount} has been successfully processed on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}. Payment is on the way!"
         send_sms(staff_phone, staff_message)
 
         # Send SMS to the accountant
-        accountant = Staff.objects.filter(employee=request.user).first()
+        
         if accountant and accountant.phone_number:
             accountant_message = (
                 f"Payment of {claim.amount} for {claim.staff.employee.first_name} "
