@@ -7,8 +7,8 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Claim, Staff, Payments
-from .serializers import ClaimSerializer, StaffSerializer
+from .models import Claim, Staff, Payments, AuditTrail
+from .serializers import ClaimSerializer, StaffSerializer, AuditTrailSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
 from django.db.models import Q
@@ -24,7 +24,11 @@ from django.db.models import Sum
 from django.db.models.functions import TruncMonth
 from django.db.models import Count
 from django.db.models.functions import ExtractWeekDay
-from django.db.models import Avg, F, ExpressionWrapper, fields
+from django.db.models import Avg, F, ExpressionWrapper, fields, FloatField, Count
+from django.views.decorators.csrf import csrf_exempt
+import logging
+logger = logging.getLogger('custom_logger')
+logger = logging.getLogger('django')
 
 
 @ensure_csrf_cookie
@@ -301,32 +305,24 @@ def create_claim(request):
     staff = get_object_or_404(Staff, phone_number=employee_number)
 
     try:
-        if User.objects.filter(email=employee_email).exists():
-            
-            while True:
-                claim_number = str(random.randint(10**9, 10**10 - 1))
-                if not Claim.objects.filter(claim_number=claim_number).exists():
-                    break
+        while True:
+            claim_number = str(random.randint(10**9, 10**10 - 1))
+            if not Claim.objects.filter(claim_number=claim_number).exists():
+                break
 
-            claim = Claim.objects.create(
-                staff=staff,
-                claim_number=claim_number,
-                amount=claim_amount,
-                claim_reason=claim_reason,
-                status="pending"
-            )
-            
-            return Response({ 
-                "status": "success",
-                "message": "Claim Submitted",
-                "claim_number": claim.claim_number
-            }, status=status.HTTP_201_CREATED)
+        claim = Claim.objects.create(
+            staff=staff,
+            claim_number=claim_number,
+            amount=claim_amount,
+            claim_reason=claim_reason,
+            status="pending"
+        )
         
-        else:
-            return Response({
-                "status": "error",
-                "message": f"No staff available with name {employee_first_name} {employee_last_name}"
-            }, status=status.HTTP_404_NOT_FOUND)
+        return Response({ 
+            "status": "success",
+            "message": "Claim Submitted",
+            "claim_number": claim.claim_number
+        }, status=status.HTTP_201_CREATED)
 
     except Exception as e:
         return Response({
@@ -384,7 +380,6 @@ def get_all_claims(request):
     
 
 
-
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_recent_claims(request):
@@ -405,8 +400,6 @@ def get_recent_claims(request):
             "status":"error",
             "message":f"{e}",
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-
 
 
 @api_view(['GET'])
@@ -511,7 +504,7 @@ def pay_claim(request, claim_number):
     try:
         claim = Claim.objects.get(claim_number=claim_number)
         
-        if claim.status == "Paid":
+        if claim.status == "paid":
             return Response({
                 "status": "error",
                  "message": "Claim has already been paid."
@@ -1025,3 +1018,189 @@ def get_claims_summary(request):
         })
     except Exception as e:
         return Response({'error': str(e)}, status=500)
+    
+
+
+# API to Get Logs
+@csrf_exempt
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user_logs(request):
+    try:
+        # Path to log file
+        log_file_path = 'system_logs.log'
+        
+        # Read log file
+        with open(log_file_path, 'r') as f:
+            all_logs = f.readlines()
+        
+        # Filter user-related logs
+        user_logs = [
+            log.strip() for log in all_logs 
+            if any(event in log.lower() for event in [
+                'user created', 
+                'logged in', 
+                'logged out', 
+                'failed login'
+            ])
+        ]
+        
+        return Response({
+            "status": "success",
+            "message": "User logs retrieved",
+            "logs": user_logs[-100:]  # Last 100 user logs
+        }, status=status.HTTP_200_OK)
+    
+    except FileNotFoundError:
+        return Response({
+            "status": "error",
+            "message": "Log file not found"
+        }, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_claim_logs(request):
+    try:
+        # Path to log file
+        log_file_path = 'system_logs.log'
+        
+        # Read log file
+        with open(log_file_path, 'r') as f:
+            all_logs = f.readlines()
+        
+        # Filter claim-related logs
+        claim_logs = [
+            log.strip() for log in all_logs 
+            if any(event in log.lower() for event in [
+                'claim created', 
+                'claim status changed'
+            ])
+        ]
+        
+        return Response({
+            "status": "success",
+            "message": "Claim logs retrieved",
+            "logs": claim_logs[-100:]  # Last 100 claim logs
+        }, status=status.HTTP_200_OK)
+    
+    except FileNotFoundError:
+        return Response({
+            "status": "error",
+            "message": "Log file not found"
+        }, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_payment_logs(request):
+    try:
+        log_file_path = 'system_logs.log'
+        
+        with open(log_file_path, 'r') as f:
+            all_logs = f.readlines()
+        
+        payment_logs = [
+            log.strip() for log in all_logs 
+            if 'new payment' in log.lower()
+        ]
+        
+        return Response({
+            "status": "success",
+            "message": "Payment logs retrieved",
+            "logs": payment_logs[-100:]
+        }, status=status.HTTP_200_OK)
+    
+    except FileNotFoundError:
+        return Response({
+            "status": "error",
+            "message": "Log file not found"
+        }, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_audits(request):
+    try:
+        audit_trails = AuditTrail.objects.all().order_by('-timestamp')
+
+        audit_serializer = AuditTrailSerializer(audit_trails, many=True)
+
+        return Response({
+            "status":"success",
+            "message":"Audit retrieved",
+            "data": audit_serializer.data
+        }, status=status.HTTP_200_OK)
+
+    except Exception as e:
+        return Response({
+            "status":"error",
+            "message":f"{e}"
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_top_claim_processors(request):
+    try:
+        total_paid_claims = Claim.objects.filter(status='paid').count()
+        
+        if total_paid_claims == 0:
+            return Response({
+                "status": "success",
+                "message": "No paid claims found",
+                "data": []
+            }, status=status.HTTP_200_OK)
+
+        top_processors = (
+            Staff.objects
+            .annotate(
+                claims_processed=Count('payments__claim', filter=Q(payments__claim__status='paid'), distinct=True)
+            )
+            .annotate(
+                percentage=ExpressionWrapper(
+                    F('claims_processed') * 100.0 / total_paid_claims, 
+                    output_field=FloatField()
+                )
+            )
+            .filter(claims_processed__gt=0)
+            .order_by('-claims_processed')[:3]
+        )
+
+        processors_data = []
+        for staff in top_processors:
+            processor_info = {
+                'name': staff.employee.username,
+                'staff_id': staff.staff_id,
+                'claims_processed': staff.claims_processed,
+                'percentage': round(staff.percentage, 2)
+            }
+            processors_data.append(processor_info)
+
+        return Response({
+            "status": "success",
+            "message": "Top claim processors retrieved",
+            "data": processors_data
+        }, status=status.HTTP_200_OK)
+    
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

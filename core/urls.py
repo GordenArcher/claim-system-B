@@ -31,4 +31,9 @@ urlpatterns = [
     path("reports/claims-by-status/", views.get_claims_by_status),
     path("reports/processing-time/", views.get_processing_time_by_day),
     path("reports/claims-summary/", views.get_claims_summary),
+    path("logs/users/", views.get_user_logs),
+    path("logs/claims/", views.get_claim_logs),
+    path("logs/payments/", views.get_payment_logs),
+    path("system_audits/", views.get_audits),
+    path("claim_processed/", views.get_top_claim_processors),
 ]
