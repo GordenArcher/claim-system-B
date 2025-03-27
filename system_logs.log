@@ -4009,3 +4009,873 @@ TypeError: Object of type Staff is not JSON serializable
 User Joshua_Nettey logged out
 Failed login attempt for username: Unknown
 User Joshua_Nettey logged in
+User admin logged out
+Failed login attempt for username: Unknown
+User admin logged in
+Not Found: /api/v1/system_logs/
+"GET /api/v1/system_logs/ HTTP/1.1" 404 10592
+Bad Request: /api/v1/auth/register/
+"POST /api/v1/auth/register/ HTTP/1.1" 400 54
+Bad Request: /api/v1/auth/register/
+"POST /api/v1/auth/register/ HTTP/1.1" 400 54
+Bad Request: /api/v1/auth/register/
+"POST /api/v1/auth/register/ HTTP/1.1" 400 54
+Bad Request: /api/v1/auth/register/
+"POST /api/v1/auth/register/ HTTP/1.1" 400 54
+User created: {'Kingsley Essien'}
+New Claim created: 5670593286 by Staff ST-792220
+User created: Kingsley Essien
+New Claim created: 7662875842 by Staff ST-401691
+New Claim created: 8931374095 by Staff ST-401691
+New Claim created: 1734147370 by Staff ST-401691
+Internal Server Error: /api/v1/all_claims/
+"GET /api/v1/all_claims/ HTTP/1.1" 500 129
+Internal Server Error: /api/v1/pending_claims/
+"GET /api/v1/pending_claims/ HTTP/1.1" 500 129
+Internal Server Error: /api/v1/claim/payments/history/
+Internal Server Error: /api/v1/users/
+"GET /api/v1/claim/payments/history/ HTTP/1.1" 500 148
+"GET /api/v1/users/ HTTP/1.1" 500 148
+Internal Server Error: /api/v1/system_audits/
+"GET /api/v1/system_audits/ HTTP/1.1" 500 129
+Internal Server Error: /api/v1/all_claims/
+"GET /api/v1/all_claims/ HTTP/1.1" 500 129
+Internal Server Error: /admin/core/audittrail/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 676, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 290, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 330, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 678, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: AuditTrail has no field named 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 346, in result_list
+    "results": list(results(cl)),
+               ~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 322, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 313, in __init__
+    super().__init__(*items)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 218, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 299, in lookup_field
+    value = attr(obj)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1030, in action_checkbox
+    _("Select this object for an action - {}"), str(obj)
+                                                ~~~^^^^^
+  File "/Users/macbookpro/Documents/claim/claim_management/core/models.py", line 36, in __str__
+    return f"{self.user.username} - {self.action} {self.entity_type} at {self.timestamp}"
+              ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'username'
+"GET /admin/core/audittrail/ HTTP/1.1" 500 362938
+Internal Server Error: /admin/core/audittrail/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 676, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 290, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 330, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 678, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: AuditTrail has no field named 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 346, in result_list
+    "results": list(results(cl)),
+               ~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 322, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 313, in __init__
+    super().__init__(*items)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 218, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 299, in lookup_field
+    value = attr(obj)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1030, in action_checkbox
+    _("Select this object for an action - {}"), str(obj)
+                                                ~~~^^^^^
+  File "/Users/macbookpro/Documents/claim/claim_management/core/models.py", line 36, in __str__
+    return f"{self.user.username} - {self.action} {self.entity_type} at {self.timestamp}"
+              ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'username'
+"GET /admin/core/audittrail/ HTTP/1.1" 500 362938
+Internal Server Error: /admin/core/audittrail/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 676, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 290, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 330, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 678, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: AuditTrail has no field named 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 346, in result_list
+    "results": list(results(cl)),
+               ~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 322, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 313, in __init__
+    super().__init__(*items)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 218, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 299, in lookup_field
+    value = attr(obj)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1030, in action_checkbox
+    _("Select this object for an action - {}"), str(obj)
+                                                ~~~^^^^^
+  File "/Users/macbookpro/Documents/claim/claim_management/core/models.py", line 36, in __str__
+    return f"{self.user.username} - {self.action} {self.entity_type} at {self.timestamp}"
+              ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'username'
+"GET /admin/core/audittrail/ HTTP/1.1" 500 363075
+Internal Server Error: /admin/core/audittrail/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 676, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 290, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 330, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/options.py", line 678, in get_field
+    raise FieldDoesNotExist(
+        "%s has no field named '%s'" % (self.object_name, field_name)
+    )
+django.core.exceptions.FieldDoesNotExist: AuditTrail has no field named 'action_checkbox'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 346, in result_list
+    "results": list(results(cl)),
+               ~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 322, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 313, in __init__
+    super().__init__(*items)
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/templatetags/admin_list.py", line 218, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/utils.py", line 299, in lookup_field
+    value = attr(obj)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1030, in action_checkbox
+    _("Select this object for an action - {}"), str(obj)
+                                                ~~~^^^^^
+  File "/Users/macbookpro/Documents/claim/claim_management/core/models.py", line 36, in __str__
+    return f"{self.user.username} - {self.action} {self.entity_type} at {self.timestamp}"
+              ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'username'
+"GET /admin/core/audittrail/ HTTP/1.1" 500 362770
+Not Found: /api/v1/system_logs/
+"GET /api/v1/system_logs/ HTTP/1.1" 404 10592
+Claim 1734147370 status changed from pending to paid
+New Payment 10 recorded for Claim 1734147370
+Internal Server Error: /api/v1/claim/staff/pay/1734147370/
+"POST /api/v1/claim/staff/pay/1734147370/ HTTP/1.1" 500 89
+Bad Request: /api/v1/claim/staff/pay/1734147370/
+"POST /api/v1/claim/staff/pay/1734147370/ HTTP/1.1" 400 59
+Claim 8931374095 status changed from pending to paid
+New Payment 11 recorded for Claim 8931374095
+Internal Server Error: /api/v1/claim/staff/pay/8931374095/
+"POST /api/v1/claim/staff/pay/8931374095/ HTTP/1.1" 500 89
+Claim 7662875842 status changed from pending to paid
+New Payment 12 recorded for Claim 7662875842
+Bad Request: /api/v1/claim/staff/pay/7662875842/
+"POST /api/v1/claim/staff/pay/7662875842/ HTTP/1.1" 400 59
+User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:34:41.919819+00:00, Session Duration=Unknown
+Login Failure: Attempted Username=Unknown, Timestamp=2025-03-27 12:34:59.638417+00:00, Failure Reason=Invalid Credentials
+User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-03-27 12:35:00.454254+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-03-27 12:40:15] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:40:15.353327+00:00, Session Duration=Unknown
+[2025-03-27 12:46:51] WARNING | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-03-27 12:46:51.282057+00:00, Failure Reason=Invalid Credentials
+[2025-03-27 12:46:51] INFO | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-03-27 12:46:51.963397+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-03-27 12:54:07] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:54:07.125224+00:00, Session Duration=0h 7m 15s
+[2025-03-27 12:54:07] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:54:07] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 78
+[2025-03-27 12:54:12] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:54:12.505253+00:00, Session Duration=Unknown
+[2025-03-27 12:54:12] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:54:12] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 78
+[2025-03-27 12:54:20] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:54:20.360235+00:00, Session Duration=Unknown
+[2025-03-27 12:54:20] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:54:20] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 78
+[2025-03-27 12:54:40] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:54:40.033385+00:00, Session Duration=Unknown
+[2025-03-27 12:54:40] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:54:40] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 78
+[2025-03-27 12:54:57] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:54:57.665720+00:00, Session Duration=Unknown
+[2025-03-27 12:54:57] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:54:57] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 72
+[2025-03-27 12:54:59] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:54:59.118896+00:00, Session Duration=Unknown
+[2025-03-27 12:54:59] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:54:59] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 72
+[2025-03-27 12:55:21] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:55:21.908347+00:00, Session Duration=Unknown
+[2025-03-27 12:55:21] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:55:21] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 78
+[2025-03-27 12:55:40] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:55:40.731955+00:00, Session Duration=Unknown
+[2025-03-27 12:55:40] ERROR | log | Internal Server Error: /api/v1/auth/logout/
+[2025-03-27 12:55:40] ERROR | basehttp | "POST /api/v1/auth/logout/ HTTP/1.1" 500 78
+[2025-03-27 12:56:30] INFO | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 12:56:30.177021+00:00, Session Duration=Unknown
+[2025-03-27 12:56:46] WARNING | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-03-27 12:56:46.685583+00:00, Failure Reason=Invalid Credentials
+[2025-03-27 12:56:47] WARNING | views | Failed login attempt for email: archergorden@gmail.com
+[2025-03-27 12:56:47] WARNING | log | Bad Request: /api/v1/auth/login/
+[2025-03-27 12:56:47] WARNING | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 400 50
+[2025-03-27 12:57:05] WARNING | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-03-27 12:57:05.585039+00:00, Failure Reason=Invalid Credentials
+[2025-03-27 12:57:06] WARNING | views | Failed login attempt for email: archergorden@gmail.com
+[2025-03-27 12:57:06] WARNING | log | Bad Request: /api/v1/auth/login/
+[2025-03-27 12:57:06] WARNING | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 400 50
+[2025-03-27 12:57:15] WARNING | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-03-27 12:57:15.947417+00:00, Failure Reason=Invalid Credentials
+[2025-03-27 12:57:16] INFO | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-03-27 12:57:16.674456+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-03-27 13:00:11] INFO | signals | Claim Status Change: Claim Number=7662875842, Staff ID=ST-401691, Previous Status=paid, New Status=pending, Timestamp=2025-03-27 13:00:11.580258+00:00
+[2025-03-27 13:00:27] INFO | signals | Claim Status Change: Claim Number=7662875842, Staff ID=ST-401691, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 13:00:27.208636+00:00
+[2025-03-27 13:00:27] INFO | signals | New Payment Recording: Payment ID=13, Claim Number=7662875842, Paid By Staff ID=12345, Claim Amount=10000.00, Payment Timestamp=2025-03-27 13:00:27.230305+00:00
+[2025-03-27 14:45:54] INFO | signals | Claim Status Change: Claim Number=7662875842, Staff ID=ST-401691, Previous Status=paid, New Status=pending, Timestamp=2025-03-27 14:45:54.476928+00:00
+[2025-03-27 14:59:26] INFO | signals | Claim Status Change: Claim Number=7662875842, Staff ID=ST-401691, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 14:59:26.894046+00:00
+[2025-03-27 14:59:26] INFO | signals | New Payment Recording: Payment ID=14, Claim Number=7662875842, Paid By Staff ID=12345, Claim Amount=10000.00, Payment Timestamp=2025-03-27 14:59:26.924305+00:00
+[2025-03-27 15:01:02] WARNING | log | Bad Request: /api/v1/claim/staff/pay/7662875842/
+[2025-03-27 15:01:02] WARNING | basehttp | "POST /api/v1/claim/staff/pay/7662875842/ HTTP/1.1" 400 59
+[2025-03-27 15:01:23] INFO | signals | Claim Status Change: Claim Number=7662875842, Staff ID=ST-401691, Previous Status=paid, New Status=pending, Timestamp=2025-03-27 15:01:23.645530+00:00
+[2025-03-27 15:01:48] INFO | signals | Claim Status Change: Claim Number=7662875842, Staff ID=ST-401691, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 15:01:48.775156+00:00
+[2025-03-27 15:01:48] INFO | signals | New Payment Recording: Payment ID=15, Claim Number=7662875842, Paid By Staff ID=12345, Claim Amount=10000.00, Payment Timestamp=2025-03-27 15:01:48.784179+00:00
+[2025-03-27 15:02:51] ERROR | log | Internal Server Error: /admin/core/staff/12/delete/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: core_audittrail.entity_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 2181, in delete_view
+    return self._delete_view(request, object_id, extra_context)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 2217, in _delete_view
+    self.delete_model(request, obj)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1300, in delete_model
+    obj.delete()
+    ~~~~~~~~~~^^
+  File "/Users/macbookpro/Documents/claim/claim_management/core/models.py", line 124, in delete
+    AuditTrail.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=current_user,
+        ^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        changes=deletion_details
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: core_audittrail.entity_id
+[2025-03-27 15:02:51] ERROR | basehttp | "POST /admin/core/staff/12/delete/ HTTP/1.1" 500 220783
+[2025-03-27 15:02:57] ERROR | log | Internal Server Error: /admin/core/staff/12/delete/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: core_audittrail.entity_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/sites.py", line 241, in inner
+    return view(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 2181, in delete_view
+    return self._delete_view(request, object_id, extra_context)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 2217, in _delete_view
+    self.delete_model(request, obj)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1300, in delete_model
+    obj.delete()
+    ~~~~~~~~~~^^
+  File "/Users/macbookpro/Documents/claim/claim_management/core/models.py", line 124, in delete
+    AuditTrail.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        user=current_user,
+        ^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        changes=deletion_details
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/backends/sqlite3/base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: core_audittrail.entity_id
+[2025-03-27 15:02:57] ERROR | basehttp | "POST /admin/core/staff/12/delete/ HTTP/1.1" 500 220783
+[2025-03-27 15:05:25] INFO | signals | New Claim Creation: Claim Number=6023220051, Staff ID=ST-427444, Amount=20222, Reason=Testing, Initial Status=pending, Timestamp=2025-03-27 15:05:25.731013+00:00
+[2025-03-27 15:07:23] INFO | signals | User Creation: Username=Kingsley Essien, Email=kignsley@gmail.com, First Name=, Last Name=, Is Staff=False, Date Joined=2025-03-27 15:07:23.738536+00:00
+[2025-03-27 15:07:23] INFO | signals | New Claim Creation: Claim Number=3743848583, Staff ID=ST-681928, Amount=20222, Reason=Testing, Initial Status=pending, Timestamp=2025-03-27 15:07:23.764812+00:00
+[2025-03-27 15:09:48] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 15:09:48.161876+00:00
+[2025-03-27 15:09:48] INFO | signals | New Payment Recording: Payment ID=16, Claim Number=3743848583, Paid By Staff ID=12345, Claim Amount=20222.00, Payment Timestamp=2025-03-27 15:09:48.177022+00:00
+[2025-03-27 15:21:55] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=paid, New Status=pending, Timestamp=2025-03-27 15:21:55.755187+00:00
+[2025-03-27 15:22:02] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 15:22:02.042156+00:00
+[2025-03-27 15:22:02] INFO | signals | New Payment Recording: Payment ID=17, Claim Number=3743848583, Paid By Staff ID=12345, Claim Amount=20222.00, Payment Timestamp=2025-03-27 15:22:02.051560+00:00
+[2025-03-27 15:35:03] INFO | signals | Claim Status Change: Claim Number=6023220051, Staff ID=ST-427444, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 15:35:03.688428+00:00
+[2025-03-27 15:35:03] INFO | signals | New Payment Recording: Payment ID=18, Claim Number=6023220051, Paid By Staff ID=12345, Claim Amount=20222.00, Payment Timestamp=2025-03-27 15:35:03.705908+00:00
+[2025-03-27 15:35:16] WARNING | log | Bad Request: /api/v1/claim/staff/pay/6023220051/
+[2025-03-27 15:35:16] WARNING | basehttp | "POST /api/v1/claim/staff/pay/6023220051/ HTTP/1.1" 400 59
+[2025-03-27 15:35:37] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=paid, New Status=pending, Timestamp=2025-03-27 15:35:37.232413+00:00
+[2025-03-27 15:35:46] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 15:35:46.155569+00:00
+[2025-03-27 15:35:46] INFO | signals | New Payment Recording: Payment ID=19, Claim Number=3743848583, Paid By Staff ID=12345, Claim Amount=20222.00, Payment Timestamp=2025-03-27 15:35:46.168018+00:00
+[2025-03-27 15:36:41] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=paid, New Status=pending, Timestamp=2025-03-27 15:36:41.359074+00:00
+[2025-03-27 15:36:50] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 15:36:50.307777+00:00
+[2025-03-27 15:36:50] INFO | signals | New Payment Recording: Payment ID=20, Claim Number=3743848583, Paid By Staff ID=12345, Claim Amount=20222.00, Payment Timestamp=2025-03-27 15:36:50.317181+00:00
+[2025-03-27 15:37:58] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=paid, New Status=pending, Timestamp=2025-03-27 15:37:58.662981+00:00
+[2025-03-27 15:38:05] INFO | signals | Claim Status Change: Claim Number=3743848583, Staff ID=ST-681928, Previous Status=pending, New Status=paid, Timestamp=2025-03-27 15:38:05.512959+00:00
+[2025-03-27 15:38:05] INFO | signals | New Payment Recording: Payment ID=21, Claim Number=3743848583, Paid By Staff ID=12345, Claim Amount=20222.00, Payment Timestamp=2025-03-27 15:38:05.523842+00:00
+[2025-03-27 15:44:01] WARNING | log | Bad Request: /api/v1/profile/change_profile/
+[2025-03-27 15:44:01] WARNING | basehttp | "POST /api/v1/profile/change_profile/ HTTP/1.1" 400 68
+[2025-03-27 15:44:09] WARNING | log | Bad Request: /api/v1/profile/change_profile/
+[2025-03-27 15:44:09] WARNING | basehttp | "POST /api/v1/profile/change_profile/ HTTP/1.1" 400 68
+[2025-03-27 15:44:31] WARNING | log | Bad Request: /api/v1/profile/change_profile/
+[2025-03-27 15:44:31] WARNING | basehttp | "POST /api/v1/profile/change_profile/ HTTP/1.1" 400 68
+[2025-03-27 15:47:40] WARNING | log | Bad Request: /api/v1/profile/change_profile/
+[2025-03-27 15:47:40] WARNING | basehttp | "POST /api/v1/profile/change_profile/ HTTP/1.1" 400 54
+[2025-03-27 15:47:45] WARNING | log | Bad Request: /api/v1/profile/change_profile/
+[2025-03-27 15:47:45] WARNING | basehttp | "POST /api/v1/profile/change_profile/ HTTP/1.1" 400 54
+[2025-03-27 15:49:11] WARNING | log | Bad Request: /api/v1/profile/change_profile/
+[2025-03-27 15:49:11] WARNING | basehttp | "POST /api/v1/profile/change_profile/ HTTP/1.1" 400 54
+[2025-03-27 15:49:12] WARNING | log | Bad Request: /api/v1/profile/change_profile/
+[2025-03-27 15:49:12] WARNING | basehttp | "POST /api/v1/profile/change_profile/ HTTP/1.1" 400 54
+[2025-03-27 16:01:09] WARNING | log | Not Found: /api/v1/profile/change_password/
+[2025-03-27 16:01:09] WARNING | basehttp | "POST /api/v1/profile/change_password/ HTTP/1.1" 404 10124
+[2025-03-27 16:01:29] WARNING | log | Not Found: /api/v1/profile/change_password/
+[2025-03-27 16:01:29] WARNING | basehttp | "POST /api/v1/profile/change_password/ HTTP/1.1" 404 10124
+[2025-03-27 16:05:40] WARNING | log | Not Found: /api/v1/profile/change_password/
+[2025-03-27 16:05:40] WARNING | basehttp | "POST /api/v1/profile/change_password/ HTTP/1.1" 404 10124
+[2025-03-27 16:11:25] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:11:25] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 57
+[2025-03-27 16:11:26] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:11:26] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 57
+[2025-03-27 16:12:00] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:12:00] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 57
+[2025-03-27 16:12:03] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:12:03] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 57
+[2025-03-27 16:12:20] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:12:20] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 60
+[2025-03-27 16:12:24] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:12:24] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 60
+[2025-03-27 16:13:28] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:13:28] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 60
+[2025-03-27 16:14:36] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:14:36] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 60
+[2025-03-27 16:14:39] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:14:39] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 60
+[2025-03-27 16:14:45] WARNING | log | Bad Request: /api/v1/staff/change_password/
+[2025-03-27 16:14:45] WARNING | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 86
+[2025-03-27 16:15:20] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-27 16:15:20] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-27 16:15:20] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-27 16:15:20] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58

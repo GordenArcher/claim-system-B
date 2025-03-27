@@ -46,8 +46,7 @@ This is a login function that logs a user in and sets a cookie of access_token r
 def register(request):
     data = request.data
 
-    first_name = data.get("first_name")
-    last_name = data.get("last_name")
+    full_name = data.get("full_name")
     email = data.get("email")
     phone_number = data.get("phone_number")
     role = data.get("role")
@@ -55,7 +54,7 @@ def register(request):
     password2 = data.get("password2")
     
 
-    if not all([first_name, last_name, email, phone_number, password]):
+    if not all([full_name, email, phone_number, password]):
         return Response({"status": "error", "message": "All fields are required"}, status=status.HTTP_400_BAD_REQUEST)
 
     if User.objects.filter(email=email).exists():
@@ -77,7 +76,7 @@ def register(request):
         }, status=status.HTTP_400_BAD_REQUEST)
 
     try:
-        user = User.objects.create_user(username=f"{first_name}_{last_name}", email=email, password=password, first_name=first_name, last_name=last_name)
+        user = User.objects.create_user(username={full_name}, email=email, password=password)
 
         # Generate unique staff ID (e.g., ST-123456)
         staff_id = f"ST-{random.randint(100000, 999999)}"
@@ -132,6 +131,8 @@ def login(request):
 
             profile_serializer = StaffSerializer(profile)
 
+            logger.info(f"User logged in: {user.email}")
+
             response = Response({
                 "status": "success",
                 "auth": True,
@@ -178,6 +179,9 @@ def login(request):
             return response
 
         else:
+
+            logger.warning(f"Failed login attempt for email: {email}")
+
             return Response({
                 "status": "error",
                 "message": "Invalid credentials"
@@ -238,11 +242,15 @@ class customTokenRefreshView(TokenRefreshView):
 """ 
 This is also the logout function as the function name says, it removes and destroys the current user's session and also removes the custom cookies
 """
+
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def logout(request):
     try:
+        user = request.user
         auth.logout(request)
+
+        logger.info(f"User logged out: {user.email}")
 
         res = Response({
             "status":"success",
@@ -283,28 +291,48 @@ def check_authentication(request):
 """ 
 This function create or initiates a new claim for a staff by collecting their dtata
 """
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_claim(request):
     data = request.data
 
-    employee_first_name = data.get("first_name")
-    employee_last_name = data.get("last_name")
+    employee_full_name = data.get("full_name")
     employee_email = data.get("employee_email")
     employee_number = data.get("phone_number")
     claim_amount = data.get("claim_amount")
     claim_reason = data.get("claim_reason")
 
-    if not all([employee_first_name, employee_last_name, employee_email, employee_number, claim_amount, claim_reason]):
+    if not all([employee_full_name, employee_email, employee_number, claim_amount, claim_reason]):
         return Response({
             "status": "error",
             "message": "All fields are required"
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    staff = get_object_or_404(Staff, phone_number=employee_number)
-
     try:
+        # Try to get existing staff or create a new one if not found
+        try:
+            staff = Staff.objects.get(phone_number=employee_number)
+        except Staff.DoesNotExist:
+            try:
+                user = User.objects.create_user(
+                    username=employee_full_name,
+                    email=employee_email,
+                )
+            except Exception as user_create_error:
+                return Response({
+                    "status": "error",
+                    "message": f"Error creating user: {str(user_create_error)}"
+                }, status=status.HTTP_400_BAD_REQUEST)
+
+            staff_id = f"ST-{random.randint(100000, 999999)}"
+
+            staff = Staff.objects.create(
+                employee=user,
+                staff_id=staff_id,
+                phone_number=employee_number,
+                role='staff'
+            )
+
         while True:
             claim_number = str(random.randint(10**9, 10**10 - 1))
             if not Claim.objects.filter(claim_number=claim_number).exists():
@@ -320,16 +348,14 @@ def create_claim(request):
         
         return Response({ 
             "status": "success",
-            "message": "Claim Submitted",
-            "claim_number": claim.claim_number
+            "message": "Claim Submitted successfully!",
         }, status=status.HTTP_201_CREATED)
 
     except Exception as e:
         return Response({
             "status": "error",
             "message": str(e)
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)  
 
 
 @api_view(["GET"])
@@ -528,17 +554,20 @@ def pay_claim(request, claim_number):
         payment.save()
         
         # Send SMS to the Staff
-        staff_message = f"Dear {claim.staff.employee.first_name}, your claim (#{claim_number}) of {claim.amount} has been successfully processed on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}. Payment is on the way!"
+        staff_message = (
+            f"Hello {claim.staff.employee.username}, your claim #{claim_number} for Ghc{claim.amount} has been approved "
+            f"and processed by {accountant.employee.username}. Payment is on it's way!!. "
+            f"Processed on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
+        )
         send_sms(staff_phone, staff_message)
 
+
         # Send SMS to the accountant
-        
         if accountant and accountant.phone_number:
             accountant_message = (
-                f"Payment of {claim.amount} for {claim.staff.employee.first_name} "
-                f"{claim.staff.employee.last_name} (Claim #{claim_number}, Phone: {staff_phone}) "
-                f"has been successfully processed on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} "
-                f"by {accountant.employee.first_name} {accountant.employee.last_name}."
+                f"Payment Notification: Ghc{claim.amount} approved for {claim.staff.employee.username} {claim.staff.employee.last_name} "
+                f"(Claim #{claim_number}, Staff Contact: {staff_phone}). "
+                f"Processed by {accountant.employee.username} on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
             )
             send_sms(accountant.phone_number, accountant_message)
         
@@ -630,98 +659,110 @@ def get_all_payments(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def change_profile(request):
     data = request.data
 
-    first_name = data.get("first_name")
-    last_name = data.get("last_name")
+    username = data.get("username")
     email = data.get("email")
     phone_number = data.get("phone_number")
 
+    if not all([username, email, phone_number]):
+        return Response({
+            "status": "error",
+            "message": "All fields are required"
+        }, status=status.HTTP_400_BAD_REQUEST)
+
     try:
-        if User.objects.filter(email=email).exists():
+        if User.objects.exclude(pk=request.user.pk).filter(email=email).exists():
             return Response({
-                "status":"error",
-                "message":f"{email} already exists"
+                "status": "error",
+                "message": f"{email} is already associated with another account"
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        if Staff.objects.filter(phone_number=phone_number).exists():
+        if Staff.objects.exclude(employee=request.user).filter(phone_number=phone_number).exists():
             return Response({
-                "status":"error",
-                "message":f"Staff with {phone_number} already exists"
+                "status": "error",
+                "message": f"{phone_number} is already registered"
             }, status=status.HTTP_400_BAD_REQUEST)
         
         request.user.email = email
-        request.user.first_name = first_name
-        request.user.last_name = last_name
+        request.user.username = username
         request.user.save()
 
-        Staff.objects.update_or_create(employee=request.user, defaults={"phone_number": phone_number},)
+        Staff.objects.update_or_create(
+            employee=request.user, 
+            defaults={"phone_number": phone_number}
+        )
 
         return Response({
-            "status":"success",
-            "message":"Profile updated Successful"
+            "status": "success",
+            "message": "Profile updated successfully",
+            "data": {
+                "username": username,
+                "email": email,
+                "phone_number": phone_number
+            }
         }, status=status.HTTP_200_OK)
         
     except Exception as e:
+        logger.error(f"Profile update error for user {request.user.username}: {str(e)}")
+        
         return Response({
             "status": "error", 
-            "message": f"An error occurred: {str(e)}"
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
-
-
+            "message": "Unable to update profile. Please try again later."
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def change_password(request):
-    data = request.data
+   data = request.data
 
-    staff_email = data.get("email")
-    new_password = data.get("new_password")
-    new_password2 = data.get("new_password2")
+   old_password = data.get("currentPassword")
+   new_password = data.get("newPassword")
+   new_password2 = data.get("confirmPassword")
 
-    try:
+   try:
+       if not all([old_password, new_password, new_password2]):
+           return Response({
+               "status": "error",
+               "message": "All fields are required"
+           }, status=status.HTTP_400_BAD_REQUEST)
 
-        if not all(staff_email, new_password, new_password2):
-            return Response({
-                "status":"success",
-                "message":"All fields are required"
-            }, status=status.HTTP_400_BAD_REQUEST)
+       if new_password != new_password2:
+           return Response({
+               "status": "error",
+               "message": "New passwords do not match"
+           }, status=status.HTTP_400_BAD_REQUEST)
 
-        if new_password != new_password2:
-            return Response({
-                "status": "error",
-                "message": "The new passwords do not match"
-            }, status=status.HTTP_400_BAD_REQUEST)
-        
+       user = request.user
 
-        user = User.objects.get(email=staff_email)
+       if not user.check_password(old_password):
+           return Response({
+               "status": "error",
+               "message": "Current password is incorrect"
+           }, status=status.HTTP_400_BAD_REQUEST)
 
-        if user:
-            user.password = new_password
+       if user.check_password(new_password):
+           return Response({
+               "status": "error",
+               "message": "New password cannot be the same as the current password"
+           }, status=status.HTTP_400_BAD_REQUEST)
 
-            return Response({
-                "status":"success",
-                "message":f"Password has been changed for {user.first_name} {user.last_name}"
-            }, status=status.HTTP_200_OK)
+       user.set_password(new_password)
+       user.save()
 
-        else:
-            return Response({
-                "status":"error",
-                "message":"Email does not exists"
-            }, status=status.HTTP_400_BAD_REQUEST)    
-            
-        
+       return Response({
+           "status": "success",
+           "message": f"Password has been changed successful"
+       }, status=status.HTTP_200_OK)
 
-    except Exception as e:
-        return Response({
-            "status": "error",
-            "message": f"An error occurred: {str(e)}"
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+   except Exception as e:
+       return Response({
+           "status": "error",
+           "message": "Unable to change password. Please try again."
+       }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)  
 
 
 @api_view(['GET'])
@@ -741,13 +782,11 @@ def get_user_details(request):
             'message': 'User retrieved successfully',
             'data': {
                 'username': user.username,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
                 'email': user.email,
                 'staff_id': staff_id,
                 'phone_number': phone_number,
                 'role': role,
-                'has_access': staff.is_blocked
+                'is_blocked': staff.is_blocked
             }
         }, status=200)
 
@@ -880,7 +919,6 @@ def unblock_staff(request, staff_id):
 
 
 # Get payments by month (for the last 6 months)
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_monthly_payments(request):
@@ -985,6 +1023,7 @@ def get_processing_time_by_day(request):
         return Response({'error': str(e)}, status=500)
 
 
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_claims_summary(request):
@@ -1020,118 +1059,60 @@ def get_claims_summary(request):
         return Response({'error': str(e)}, status=500)
     
 
+import os
 
-# API to Get Logs
-@csrf_exempt
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_user_logs(request):
+def read_log_file(log_file_path, filter_func, limit=100):
+    """
+    Generic log file reading function with filtering and limiting
+    """
     try:
-        # Path to log file
-        log_file_path = 'system_logs.log'
+        if not os.path.exists(log_file_path):
+            raise FileNotFoundError(f"Log file not found: {log_file_path}")
         
-        # Read log file
         with open(log_file_path, 'r') as f:
-            all_logs = f.readlines()
-        
-        # Filter user-related logs
-        user_logs = [
-            log.strip() for log in all_logs 
-            if any(event in log.lower() for event in [
-                'user created', 
-                'logged in', 
-                'logged out', 
-                'failed login'
-            ])
-        ]
-        
-        return Response({
-            "status": "success",
-            "message": "User logs retrieved",
-            "logs": user_logs[-100:]  # Last 100 user logs
-        }, status=status.HTTP_200_OK)
-    
-    except FileNotFoundError:
-        return Response({
-            "status": "error",
-            "message": "Log file not found"
-        }, status=status.HTTP_404_NOT_FOUND)
-    except Exception as e:
-        return Response({
-            "status": "error",
-            "message": str(e)
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_claim_logs(request):
-    try:
-        # Path to log file
-        log_file_path = 'system_logs.log'
-        
-        # Read log file
-        with open(log_file_path, 'r') as f:
-            all_logs = f.readlines()
-        
-        # Filter claim-related logs
-        claim_logs = [
-            log.strip() for log in all_logs 
-            if any(event in log.lower() for event in [
-                'claim created', 
-                'claim status changed'
-            ])
-        ]
-        
-        return Response({
-            "status": "success",
-            "message": "Claim logs retrieved",
-            "logs": claim_logs[-100:]  # Last 100 claim logs
-        }, status=status.HTTP_200_OK)
-    
-    except FileNotFoundError:
-        return Response({
-            "status": "error",
-            "message": "Log file not found"
-        }, status=status.HTTP_404_NOT_FOUND)
-    except Exception as e:
-        return Response({
-            "status": "error",
-            "message": str(e)
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            logs = []
+            for line in (f.readlines()[-500:])[::-1]:
+                if filter_func(line):
+                    logs.append(line.strip())
+                    if len(logs) == limit:
+                        break
+            
+            return logs
+    except (IOError, PermissionError) as e:
+        logger.error(f"Error reading log file: {e}")
+        return []
 
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_payment_logs(request):
+def get_all_logs(request):
+    """
+    Retrieve all system logs with optional filtering
+    """
+    log_file_path = 'system_logs.log'
+    log_type = request.GET.get('type', None)
+
+    def signals_log_filter(log):
+        """Filter function to get only signal-generated logs"""
+        return 'signals' in log.lower()
+
     try:
-        log_file_path = 'system_logs.log'
-        
-        with open(log_file_path, 'r') as f:
-            all_logs = f.readlines()
-        
-        payment_logs = [
-            log.strip() for log in all_logs 
-            if 'new payment' in log.lower()
-        ]
+        signal_logs = read_log_file(log_file_path, signals_log_filter)
         
         return Response({
             "status": "success",
-            "message": "Payment logs retrieved",
-            "logs": payment_logs[-100:]
+            "message": "Signal logs retrieved",
+            "logs": signal_logs
         }, status=status.HTTP_200_OK)
     
-    except FileNotFoundError:
-        return Response({
-            "status": "error",
-            "message": "Log file not found"
-        }, status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
+        logger.error(f"Error retrieving signal logs: {e}")
         return Response({
             "status": "error",
-            "message": str(e)
+            "message": "Failed to retrieve signal logs"
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 
 @api_view(['GET'])

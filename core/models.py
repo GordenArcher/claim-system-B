@@ -37,6 +37,7 @@ class AuditTrail(models.Model):
 
 class Staff(models.Model):
     USER_ROLES = (
+        ('staff', 'Staff'),
         ('accountant', 'Accountant'),
         ('administrator', 'Administrator'),
         ('main_administrator', 'Main_Administrator'),
@@ -259,7 +260,7 @@ class Payments(models.Model):
             AuditTrail.objects.create(
                 user=current_user,
                 entity_type='payment',
-                entity_id=self.id,
+                entity_id=self.payment_id,
                 action=action,
                 changes=changes
             )
@@ -284,7 +285,7 @@ class Payments(models.Model):
         AuditTrail.objects.create(
             user=current_user,
             entity_type='payment',
-            entity_id=self.id,
+            entity_id=self.payment_id,
             action='delete',
             changes=deletion_details
         )
