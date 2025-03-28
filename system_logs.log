@@ -4879,3 +4879,60 @@ django.db.utils.IntegrityError: NOT NULL constraint failed: core_audittrail.enti
 [2025-03-27 16:15:20] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
 [2025-03-27 16:15:20] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
 [2025-03-27 16:15:20] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-27 18:10:43] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-27 18:10:43] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-27 18:10:43] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-27 18:10:43] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-27 18:10:46] INFO | signals | User Logout: Username=Gorden admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-03-27 18:10:46.857398+00:00, Session Duration=Unknown
+[2025-03-28 10:56:18] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-28 10:56:18] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-28 10:56:18] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-28 10:56:18] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-28 10:56:18] ERROR | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-03-28 10:56:18] ERROR | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-03-28 10:56:18] ERROR | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-03-28 10:56:18] ERROR | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-03-28 10:56:20] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-28 10:56:20] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-28 10:56:20] ERROR | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-03-28 10:56:20] ERROR | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-03-28 10:56:20] WARNING | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-03-28 10:56:20] WARNING | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-03-28 10:56:20] ERROR | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-03-28 10:56:20] ERROR | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-03-28 10:56:26] WARNING | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-03-28 10:56:26.300402+00:00, Failure Reason=Invalid Credentials
+[2025-03-28 10:56:27] INFO | signals | User Login: Username=Gorden admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-03-28 10:56:27.070084+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-03-28 12:11:08] WARNING | log | Unauthorized: /api/v1/reports/claims-by-status/
+[2025-03-28 12:11:08] WARNING | basehttp | "GET /api/v1/reports/claims-by-status/ HTTP/1.1" 401 58
+[2025-03-28 12:11:15] WARNING | log | Not Found: /api/auth/refresh/
+[2025-03-28 12:11:15] WARNING | basehttp | "POST /api/auth/refresh/ HTTP/1.1" 404 2387
+[2025-03-28 12:13:37] INFO | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=paid, New Status=pending, Timestamp=2025-03-28 12:13:37.073544+00:00
+[2025-03-28 12:13:49] INFO | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=pending, New Status=paid, Timestamp=2025-03-28 12:13:49.666961+00:00
+[2025-03-28 12:13:49] INFO | signals | New Payment Recording: Payment ID=22, Claim Number=3615652436, Paid By Staff ID=ST-123456, Claim Amount=20111.00, Payment Timestamp=2025-03-28 12:13:49.677745+00:00
+[2025-03-28 12:24:55] INFO | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=paid, New Status=pending, Timestamp=2025-03-28 12:24:55.989020+00:00
+[2025-03-28 12:25:08] INFO | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=pending, New Status=paid, Timestamp=2025-03-28 12:25:08.651568+00:00
+[2025-03-28 12:25:08] INFO | signals | New Payment Recording: Payment ID=23, Claim Number=3615652436, Paid By Staff ID=ST-123456, Claim Amount=20111.00, Payment Timestamp=2025-03-28 12:25:08.660041+00:00
+[2025-03-28 12:25:09] ERROR | views | Failed to send SMS: {'rate': 0.05, 'messageId': 'c5fd4e26-7409-4ad9-8784-8237e7b405de', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:25:09] ERROR | views | Failed to send SMS to 0546214293. Response: {'rate': 0.05, 'messageId': 'c5fd4e26-7409-4ad9-8784-8237e7b405de', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:25:11] ERROR | views | Failed to send SMS: {'rate': 0.05, 'messageId': 'a36c0d91-71a9-4499-b851-52b52d67ac51', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:25:11] ERROR | views | Failed to send SMS to 0546214293. Response: {'rate': 0.05, 'messageId': 'a36c0d91-71a9-4499-b851-52b52d67ac51', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:29:52] INFO | core | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=paid, New Status=pending, Timestamp=2025-03-28 12:29:52.481870+00:00
+[2025-03-28 12:29:59] INFO | core | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=pending, New Status=paid, Timestamp=2025-03-28 12:29:59.116779+00:00
+[2025-03-28 12:29:59] INFO | core | signals | New Payment Recording: Payment ID=24, Claim Number=3615652436, Paid By Staff ID=ST-123456, Claim Amount=20111.00, Payment Timestamp=2025-03-28 12:29:59.126562+00:00
+[2025-03-28 12:30:00] INFO | communications | views | SMS Response: {'rate': 0.05, 'messageId': '15a016f0-aaa2-4765-9579-f7a00f1258a8', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:30:00] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.05, 'messageId': '15a016f0-aaa2-4765-9579-f7a00f1258a8', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:30:01] INFO | communications | views | SMS Response: {'rate': 0.05, 'messageId': '4bbf13cf-f67a-4b94-96f7-75d830ed407e', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:30:01] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.05, 'messageId': '4bbf13cf-f67a-4b94-96f7-75d830ed407e', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:35:45] INFO | core | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=paid, New Status=pending, Timestamp=2025-03-28 12:35:45.529889+00:00
+[2025-03-28 12:36:07] INFO | core | signals | Claim Status Change: Claim Number=3615652436, Staff ID=ST-123456, Previous Status=pending, New Status=paid, Timestamp=2025-03-28 12:36:07.656361+00:00
+[2025-03-28 12:36:07] INFO | core | signals | New Payment Recording: Payment ID=25, Claim Number=3615652436, Paid By Staff ID=ST-123456, Claim Amount=20111.00, Payment Timestamp=2025-03-28 12:36:07.670210+00:00
+[2025-03-28 12:36:10] INFO | communications | views | SMS Response: {'rate': 0.05, 'messageId': 'de846c64-451c-4c56-850d-dd54e71f7111', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:36:10] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.05, 'messageId': 'de846c64-451c-4c56-850d-dd54e71f7111', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:36:11] INFO | communications | views | SMS Response: {'rate': 0.05, 'messageId': '16770c36-d675-4b5f-8ba9-1d2f07e5fd11', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:36:11] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.05, 'messageId': '16770c36-d675-4b5f-8ba9-1d2f07e5fd11', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-03-28 12:40:56] WARNING | django.request | log | Unauthorized: /api/v1/system/logs/
+[2025-03-28 12:40:56] WARNING | django.server | basehttp | "GET /api/v1/system/logs/ HTTP/1.1" 401 58
+[2025-03-28 12:41:05] WARNING | django.request | log | Not Found: /api/v1/logs/claims/
+[2025-03-28 12:41:05] WARNING | django.server | basehttp | "GET /api/v1/logs/claims/ HTTP/1.1" 404 10087
+[2025-03-28 13:14:18] WARNING | django.request | log | Unauthorized: /api/v1/reports/claims-by-status/
+[2025-03-28 13:14:18] WARNING | django.server | basehttp | "GET /api/v1/reports/claims-by-status/ HTTP/1.1" 401 58

@@ -496,7 +496,7 @@ def get_staff_claims(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
+sms_logger = logging.getLogger('communications')
 HUTBUL_SENDER_ID = "glcxnwfw"
 
 def send_sms(phone_number, message):
@@ -513,15 +513,17 @@ def send_sms(phone_number, message):
         response = requests.get(url, params=params)
         response_data = response.json()
 
+        sms_logger.info(f"SMS Response: {response_data}")
+
         if response.status_code == 200 and response_data.get("status") == "Success":
+            sms_logger.info(f"SMS sent successfully to {phone_number}. Response: {response_data}")
             return True
         else:
-            print(f"Failed to send SMS: {response_data}")
+            sms_logger.error(f"Failed to send SMS to {phone_number}. Response: {response_data}")
             return False
     except Exception as e:
-        print(f"Error sending SMS: {str(e)}")
+        logger.exception(f"Error sending SMS: {str(e)}")
         return False
-    
 
 
 @api_view(['POST'])
@@ -942,7 +944,7 @@ def get_monthly_payments(request):
         
         return Response({
             "status":"success",
-            "message":"",
+            "message":"retrieved",
             "data":result
         }, status=status.HTTP_200_OK)
     
@@ -974,9 +976,18 @@ def get_claims_by_status(request):
                 'value': percentage
             })
         
-        return Response({'data': result, 'total_claims': total_claims})
+        return Response({
+            "status":"success",
+            "message":"retrieved",
+            "data": result, 
+            'total_claims': total_claims
+            }, status=status.HTTP_200_OK)
+    
     except Exception as e:
-        return Response({'error': str(e)}, status=500)
+        return Response({
+            "status":"error",
+            "message": str(e)
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
 
@@ -1093,12 +1104,18 @@ def get_all_logs(request):
     log_file_path = 'system_logs.log'
     log_type = request.GET.get('type', None)
 
-    def signals_log_filter(log):
-        """Filter function to get only signal-generated logs"""
-        return 'signals' in log.lower()
+    def relevant_log_filter(log):
+        """
+        Filter function to return logs related to:
+        - "signals"
+        - "SMS Response" (Hubul's responses)
+        - "Failed to send SMS"
+        """
+        keywords = ['signals', 'sms response', 'failed to send sms']
+        return any(keyword in log.lower() for keyword in keywords)
 
     try:
-        signal_logs = read_log_file(log_file_path, signals_log_filter)
+        signal_logs = read_log_file(log_file_path, relevant_log_filter)
         
         return Response({
             "status": "success",

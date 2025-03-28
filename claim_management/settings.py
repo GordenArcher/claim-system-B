@@ -190,7 +190,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '[{asctime}] {levelname} | {module} | {message}',
+            'format': '[{asctime}] {levelname} | {name} | {module} | {message}',
             'style': '{',
             'datefmt': '%Y-%m-%d %H:%M:%S',
         },
@@ -209,7 +209,7 @@ LOGGING = {
             'formatter': 'verbose',
         },
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
         },
@@ -244,6 +244,11 @@ LOGGING = {
             'propagate': False,
         },
         'claims': {
+            'handlers': ['file', 'console', 'error_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'communications': {
             'handlers': ['file', 'console', 'error_file'],
             'level': 'INFO',
             'propagate': False,
