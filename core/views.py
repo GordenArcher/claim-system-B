@@ -76,7 +76,7 @@ def register(request):
         }, status=status.HTTP_400_BAD_REQUEST)
 
     try:
-        user = User.objects.create_user(username={full_name}, email=email, password=password)
+        user = User.objects.create_user(username=full_name, email=email, password=password)
 
         # Generate unique staff ID (e.g., ST-123456)
         staff_id = f"ST-{random.randint(100000, 999999)}"
