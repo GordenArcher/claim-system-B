@@ -21,6 +21,7 @@ class AuditTrail(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, blank=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='audit_logs')
+    full_name = models.CharField(max_length=1000, null=True, blank=True)
     entity_type = models.CharField(max_length=20, choices=ENTITIES, null=True, blank=True)
     entity_id = models.PositiveIntegerField()
     action = models.CharField(max_length=20, choices=ACTIONS, null=True, blank=True)
@@ -33,18 +34,17 @@ class AuditTrail(models.Model):
         ordering = ['-timestamp']
 
     def __str__(self):
-        return f"{self.user.username} - {self.action} {self.entity_type} at {self.timestamp}"
+        return f"{self.user or self.full_name} - {self.action} {self.entity_type} at {self.timestamp}"
 
-class Staff(models.Model):
+class Accountant(models.Model):
     USER_ROLES = (
-        ('staff', 'Staff'),
         ('accountant', 'Accountant'),
         ('administrator', 'Administrator'),
         ('main_administrator', 'Main_Administrator'),
     )
     
     employee = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    staff_id = models.CharField(max_length=20, unique=True) 
+    staff_number = models.CharField(max_length=20, unique=True) 
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
         message="Phone number must be entered in the format: '+233XXXXXXXXX'. Up to 15 digits allowed."
@@ -60,7 +60,7 @@ class Staff(models.Model):
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None
-        old_instance = Staff.objects.filter(pk=self.pk).first() if not is_new else None
+        old_instance = Accountant.objects.filter(pk=self.pk).first() if not is_new else None
         
         super().save(*args, **kwargs)
         
@@ -79,7 +79,7 @@ class Staff(models.Model):
         if is_new:
             action = 'create'
             changes = {
-                'staff_id': self.staff_id,
+                'staff_number': self.staff_number,
                 'role': self.role,
                 'phone_number': self.phone_number
             }
@@ -109,12 +109,12 @@ class Staff(models.Model):
         User = get_user_model()
         
         try:
-            current_user = User.objects.get(username=self.employee.username)
+            current_user = User.objects.get(username=self)
         except User.DoesNotExist:
             current_user = None
 
         deletion_details = {
-            'staff_id': self.staff_id,
+            'staff_number': self.staff_number,
             'role': self.role,
             'phone_number': self.phone_number
         }
@@ -135,18 +135,19 @@ class Claim(models.Model):
         ('approved', 'Approved'),
         ('paid', 'Paid'),
     ]
-
-    staff = models.ForeignKey(Staff, on_delete=models.CASCADE) 
-    claim_number = models.CharField(max_length=20, unique=True)  
+    full_name = models.CharField(max_length=100, null=True, blank=True)
+    claim_number = models.CharField(max_length=100, unique=True, null=True, blank=True)
+    staff_number = models.CharField(max_length=20, null=True, blank=True) 
+    phone_number = models.CharField(max_length=15, null=True, blank=True) 
     amount = models.DecimalField(max_digits=10, decimal_places=2)  
     claim_reason = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')  
-    created_at = models.DateTimeField(auto_now_add=True)  
+    created_at = models.DateTimeField(null=True, blank=True)  
     payment_date = models.DateTimeField(null=True, blank=True)  
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Claim {self.claim_number} - {self.staff.staff_id} ({self.status})"
+        return f"Claim {self.claim_number} - {self.full_name} ({self.status})"
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None
@@ -161,7 +162,7 @@ class Claim(models.Model):
         User = get_user_model()
         
         try:
-            current_user = User.objects.get(username=self.staff.employee.username)
+            current_user = User.objects.get(username="example_user")
         except User.DoesNotExist:
             current_user = None
 
@@ -189,6 +190,7 @@ class Claim(models.Model):
         if changes:
             AuditTrail.objects.create(
                 user=current_user,
+                full_name=self.full_name,
                 entity_type='claim',
                 entity_id=self.id,
                 action=action,
@@ -200,7 +202,7 @@ class Claim(models.Model):
         User = get_user_model()
         
         try:
-            current_user = User.objects.get(username=self.staff.employee.username)
+            current_user = User.objects.get(username="example_user")
         except User.DoesNotExist:
             current_user = None
 
@@ -215,6 +217,7 @@ class Claim(models.Model):
 
         AuditTrail.objects.create(
             user=current_user,
+            full_name=self.full_name,
             entity_type='claim',
             entity_id=self.id,
             action='delete',
@@ -224,7 +227,7 @@ class Claim(models.Model):
 class Payments(models.Model):
     payment_id = models.AutoField(primary_key=True)
     claim = models.ForeignKey(Claim, on_delete=models.CASCADE, related_name='payment_history')
-    paid_by = models.ForeignKey(Staff, on_delete=models.CASCADE, related_name='payments')
+    paid_by = models.ForeignKey(Accountant, on_delete=models.CASCADE, related_name='payments')
     paid_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -253,7 +256,7 @@ class Payments(models.Model):
             changes = {
                 'payment_id': self.payment_id,
                 'claim_number': self.claim.claim_number,
-                'paid_by': self.paid_by.staff_id
+                'paid_by': self.paid_by.employee.username
             }
         
         if changes:

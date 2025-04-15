@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Claim, Staff, Payments, AuditTrail
+from .models import Claim, Accountant, Payments, AuditTrail
 from .serializers import ClaimSerializer, StaffSerializer, AuditTrailSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
@@ -25,7 +25,6 @@ from django.db.models.functions import TruncMonth
 from django.db.models import Count
 from django.db.models.functions import ExtractWeekDay
 from django.db.models import Avg, F, ExpressionWrapper, fields, FloatField, Count
-from django.views.decorators.csrf import csrf_exempt
 import logging
 logger = logging.getLogger('custom_logger')
 logger = logging.getLogger('django')
@@ -45,17 +44,18 @@ This is a login function that logs a user in and sets a cookie of access_token r
 @api_view(['POST'])
 def register(request):
     data = request.data
-
     full_name = data.get("full_name")
     email = data.get("email")
     phone_number = data.get("phone_number")
+    staff_number = data.get("staff_number")
     role = data.get("role")
     password = data.get("password")
     password2 = data.get("password2")
     
 
-    if not all([full_name, email, phone_number, password]):
+    if not all([full_name, email, staff_number, phone_number, password]):
         return Response({"status": "error", "message": "All fields are required"}, status=status.HTTP_400_BAD_REQUEST)
+
 
     if User.objects.filter(email=email).exists():
         return Response({
@@ -63,7 +63,7 @@ def register(request):
             "message": "Email already registered"
         }, status=status.HTTP_400_BAD_REQUEST)
     
-    if Staff.objects.filter(phone_number=phone_number).exists():
+    if Accountant.objects.filter(phone_number=phone_number).exists():
         return Response({
             "status": "error", 
             "message": "Phone number already registered"
@@ -78,23 +78,22 @@ def register(request):
     try:
         user = User.objects.create_user(username=full_name, email=email, password=password)
 
-        # Generate unique staff ID (e.g., ST-123456)
-        staff_id = f"ST-{random.randint(100000, 999999)}"
-        while Staff.objects.filter(staff_id=staff_id).exists():
-            staff_id = f"ST-{random.randint(100000, 999999)}"
-
-        staff = Staff.objects.create(employee=user, staff_id=staff_id, phone_number=phone_number, role=role)
+        staff = Accountant.objects.create(employee=user, staff_number=staff_number, phone_number=phone_number, role=role)
 
         return Response({
             "status": "success",
-            "message": "Staff registered successfully",
-            "staff_id": staff.staff_id,
+            "message": "Registeration successfull",
+            "staff_number": staff.staff_number,
             "email": user.email,
             "role": staff.role
         }, status=status.HTTP_201_CREATED)
+    
 
     except Exception as e:
-        return Response({"status": "error", "message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({
+            "status": "error", 
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
 @api_view(['POST'])
@@ -127,7 +126,7 @@ def login(request):
             refresh = RefreshToken.for_user(user)
             access_token = str(refresh.access_token)
 
-            profile = Staff.objects.get(employee=user)
+            profile = Accountant.objects.get(employee=user)
 
             profile_serializer = StaffSerializer(profile)
 
@@ -296,55 +295,47 @@ This function create or initiates a new claim for a staff by collecting their dt
 def create_claim(request):
     data = request.data
 
-    employee_full_name = data.get("full_name")
-    employee_email = data.get("employee_email")
-    employee_number = data.get("phone_number")
+    full_name = data.get("full_name")
+    date = data.get("posting_date")
+    phone_number = data.get("phone_number")
+    staff_number = data.get("employee_number")
+    claim_number = data.get("request_number")
     claim_amount = data.get("claim_amount")
     claim_reason = data.get("claim_reason")
 
-    if not all([employee_full_name, employee_email, employee_number, claim_amount, claim_reason]):
+    if not all([full_name, date, phone_number, staff_number, claim_number, claim_amount, claim_reason]):
         return Response({
             "status": "error",
             "message": "All fields are required"
         }, status=status.HTTP_400_BAD_REQUEST)
 
     try:
-        # Try to get existing staff or create a new one if not found
-        try:
-            staff = Staff.objects.get(phone_number=employee_number)
-        except Staff.DoesNotExist:
-            try:
-                user = User.objects.create_user(
-                    username=employee_full_name,
-                    email=employee_email,
-                )
-            except Exception as user_create_error:
-                return Response({
-                    "status": "error",
-                    "message": f"Error creating user: {str(user_create_error)}"
-                }, status=status.HTTP_400_BAD_REQUEST)
+        if Claim.objects.filter(claim_number=claim_number).exists():
+            existing_claim = Claim.objects.get(claim_number=claim_number)
+            serialized_claim = ClaimSerializer(existing_claim)
+            
+            return Response({
+                "status": "error",
+                "message": f"Claim {claim_number} already exists.",
+                "type":"duplicate",
+                "claim": serialized_claim.data
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
 
-            staff_id = f"ST-{random.randint(100000, 999999)}"
-
-            staff = Staff.objects.create(
-                employee=user,
-                staff_id=staff_id,
-                phone_number=employee_number,
-                role='staff'
-            )
-
-        while True:
-            claim_number = str(random.randint(10**9, 10**10 - 1))
-            if not Claim.objects.filter(claim_number=claim_number).exists():
-                break
 
         claim = Claim.objects.create(
-            staff=staff,
+            full_name=full_name,
+            staff_number=staff_number,
             claim_number=claim_number,
+            phone_number=phone_number,
             amount=claim_amount,
             claim_reason=claim_reason,
-            status="pending"
+            status="pending",
+            created_at=date
         )
+
+        claim._current_user = request.user
+        claim.save()
         
         return Response({ 
             "status": "success",
@@ -355,8 +346,7 @@ def create_claim(request):
         return Response({
             "status": "error",
             "message": str(e)
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)  
-
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
@@ -428,31 +418,47 @@ def get_recent_claims(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@api_view(['GET'])
+@api_view(['POST']) 
 @permission_classes([IsAuthenticated])
-def verify_staff_claim(request, claim_number): 
-    verify_claim = get_object_or_404(Claim, claim_number=claim_number)
-
+def verify_staff_claim(request): 
     try:
-        claim_Serializer = ClaimSerializer(verify_claim)
+        query_data = request.data.get("claim_data")
 
-        return Response({
-            "status":"success",
-            "message":"Claim retrieved",
-            "data": claim_Serializer.data
-        }, status=status.HTTP_200_OK)
+        if not query_data:
+            return Response({
+                "status": "error",
+                "message": "No claim_data provided."
+            }, status=status.HTTP_400_BAD_REQUEST)
 
+        single_claim = Claim.objects.filter(claim_number=query_data).first()
 
-    except Claim.DoesNotExist:
+        if single_claim:
+            serialized = ClaimSerializer(single_claim)
+            return Response({
+                "status": "success",
+                "message": "Claim retrieved by request_number.",
+                "data": serialized.data
+            }, status=status.HTTP_200_OK)
+
+        claims_by_staff = Claim.objects.filter(staff_number=query_data)
+
+        if claims_by_staff.exists():
+            serialized = ClaimSerializer(claims_by_staff, many=True)
+            return Response({
+                "status": "success",
+                "message": "Claims retrieved by staff_number.",
+                "data": serialized.data
+            }, status=status.HTTP_200_OK)
+
         return Response({
             "status": "error",
-            "message": "Claim not found",
-        }, status=status.HTTP_404_NOT_FOUND)    
-    
+            "message": "No claim found for the provided data."
+        }, status=status.HTTP_404_NOT_FOUND)
+
     except Exception as e:
         return Response({
-            "status":"error",
-            "message":f"{e}",
+            "status": "error",
+            "message": str(e)
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 """ 
@@ -463,7 +469,7 @@ This function queries a specific staff's claims they made either paid or pending
 @permission_classes([IsAuthenticated])
 def get_staff_claims(request):
     try:
-        staff = get_object_or_404(Staff, employee=request.user)
+        staff = get_object_or_404(Accountant, employee=request.user)
 
         if staff:
             get_claims = Claim.objects.filter(staff=staff)
@@ -538,36 +544,35 @@ def pay_claim(request, claim_number):
                  "message": "Claim has already been paid."
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        if hasattr(claim, "staff") and claim.staff and claim.staff.phone_number:
-            staff_phone = claim.staff.phone_number
+        if claim and claim.phone_number and claim.staff_number:
+            staff_phone = claim.phone_number
         else:
             return Response({
                 "status": "error", 
-                "message": "Staff phone number not found for this claim."
+                "message": "Phone number not found for this claim."
             },status=status.HTTP_400_BAD_REQUEST)
         
         claim.status = "paid"
         claim.payment_date = timezone.now()
         claim.save()
 
-        accountant = Staff.objects.filter(employee=request.user).first()
+        accountant = Accountant.objects.filter(employee=request.user).first()
 
         payment = Payments.objects.create(claim=claim, paid_by=accountant)
         payment.save()
         
         # Send SMS to the Staff
         staff_message = (
-            f"Hello {claim.staff.employee.username}, your claim #{claim_number} for Ghc{claim.amount} has been approved "
-            f"and processed by {accountant.employee.username}. Payment is on it's way!!. "
-            f"Processed on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
+            f"Hello {claim.full_name}, your claim #{claim_number} for Ghc{claim.amount} has been payed "
+            f"and payed by {accountant.employee.username}."
+            f"Payed on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
         )
         send_sms(staff_phone, staff_message)
-
 
         # Send SMS to the accountant
         if accountant and accountant.phone_number:
             accountant_message = (
-                f"Payment Notification: Ghc{claim.amount} approved for {claim.staff.employee.username} {claim.staff.employee.last_name} "
+                f"Payment Notification: Ghc{claim.amount} made for {claim.full_name} "
                 f"(Claim #{claim_number}, Staff Contact: {staff_phone}). "
                 f"Processed by {accountant.employee.username} on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
             )
@@ -683,7 +688,7 @@ def change_profile(request):
                 "message": f"{email} is already associated with another account"
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        if Staff.objects.exclude(employee=request.user).filter(phone_number=phone_number).exists():
+        if Accountant.objects.exclude(employee=request.user).filter(phone_number=phone_number).exists():
             return Response({
                 "status": "error",
                 "message": f"{phone_number} is already registered"
@@ -693,7 +698,7 @@ def change_profile(request):
         request.user.username = username
         request.user.save()
 
-        Staff.objects.update_or_create(
+        Accountant.objects.update_or_create(
             employee=request.user, 
             defaults={"phone_number": phone_number}
         )
@@ -773,23 +778,14 @@ def get_user_details(request):
     user = request.user
 
     try:
-        # Retrieve staff details
-        staff = Staff.objects.filter(employee=user).first()
-        staff_id = staff.staff_id if staff else None
-        phone_number = staff.phone_number if staff else None
-        role = staff.role if staff else None
+        staff = Accountant.objects.filter(employee=user).first()
+        
+        staff_serializer = StaffSerializer(staff)
 
         return Response({
             'status': 'success',
             'message': 'User retrieved successfully',
-            'data': {
-                'username': user.username,
-                'email': user.email,
-                'staff_id': staff_id,
-                'phone_number': phone_number,
-                'role': role,
-                'is_blocked': staff.is_blocked
-            }
+            'data': staff_serializer.data
         }, status=200)
 
     except Exception as e:
@@ -805,7 +801,7 @@ def get_user_details(request):
 def get_all_users(request):
     try:
         
-        users = Staff.objects.all()
+        users = Accountant.objects.all()
 
         staff_serializers = StaffSerializer(users, many=True)
 
@@ -827,22 +823,19 @@ def get_all_users(request):
 @permission_classes([IsAuthenticated])
 def delete_staff(request, staff_id):
     try:
-
-        staff = Staff.objects.get(staff_id=staff_id)
-        staff_name_f = staff.employee.first_name
-        staff_name_l = staff.employee.last_name
+        staff = Accountant.objects.get(staff_id=staff_id)
+        staff_name_f = staff.employee.username
         user = staff.employee
 
-        staff.delete()
         user.delete()
 
         return Response({
             "status":"success",
-            "message":f"{staff_name_f} {staff_name_l} has been deleted"
+            "message":f"{staff_name_f} has been deleted"
         }, status=status.HTTP_200_OK)
 
 
-    except Staff.DoesNotExist:
+    except Accountant.DoesNotExist:
         return Response({
             "status": "error",
             "message": "Staff does not exist."
@@ -853,28 +846,24 @@ def delete_staff(request, staff_id):
             "status": "error", 
             "message": f"An error occurred: {str(e)}"
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def block_staff(request, staff_id):
+def block_staff(request, staff_number):
     try:
-
-        staff = Staff.objects.get(staff_id=staff_id)
+        staff = Accountant.objects.get(staff_number=staff_number)
         staff.is_blocked = True 
         staff.save()
 
-        staff_name_f = staff.employee.first_name
-        staff_name_l = staff.employee.last_name
+        staff_name_f = staff.employee.username
 
         return Response({
             "status":"success",
-            "message":f"{staff_name_f} {staff_name_l} has been blocked"
+            "message":f"{staff_name_f} has been blocked"
         }, status=status.HTTP_200_OK)
 
-    except Staff.DoesNotExist:
+    except Accountant.DoesNotExist:
         return Response({
             "status": "error",
             "message": "Staff does not exist."
@@ -888,25 +877,23 @@ def block_staff(request, staff_id):
 
 
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def unblock_staff(request, staff_id):
+def unblock_staff(request, staff_number):
     try:
 
-        staff = Staff.objects.get(staff_id=staff_id)
+        staff = Accountant.objects.get(staff_number=staff_number)
         staff.is_blocked = False 
         staff.save()
 
-        staff_name_f = staff.employee.first_name
-        staff_name_l = staff.employee.last_name
+        staff_name_f = staff.employee.username
 
         return Response({
             "status":"success",
-            "message":f"{staff_name_f} {staff_name_l} has been unblocked"
+            "message":f"{staff_name_f} has been unblocked"
         }, status=status.HTTP_200_OK)
 
-    except Staff.DoesNotExist:
+    except Accountant.DoesNotExist:
         return Response({
             "status": "error",
             "message": "Staff does not exist."
@@ -1167,7 +1154,7 @@ def get_top_claim_processors(request):
             }, status=status.HTTP_200_OK)
 
         top_processors = (
-            Staff.objects
+            Accountant.objects
             .annotate(
                 claims_processed=Count('payments__claim', filter=Q(payments__claim__status='paid'), distinct=True)
             )
@@ -1185,7 +1172,7 @@ def get_top_claim_processors(request):
         for staff in top_processors:
             processor_info = {
                 'name': staff.employee.username,
-                'staff_id': staff.staff_id,
+                'staff_id': staff.staff_number,
                 'claims_processed': staff.claims_processed,
                 'percentage': round(staff.percentage, 2)
             }
@@ -1195,6 +1182,54 @@ def get_top_claim_processors(request):
             "status": "success",
             "message": "Top claim processors retrieved",
             "data": processors_data
+        }, status=status.HTTP_200_OK)
+    
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_data_based_on_month(request):
+    month = request.query_params.get('month')
+
+    try:
+        if not month:
+            return Response({
+                "status":"error",
+                "message": "Month is required. Use ?month=YYYY-MM"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            year, month_num = map(int, month.split('-'))
+        except ValueError:
+            return Response({
+                "status":"error",
+                'message': 'Invalid month format. Use YYYY-MM'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        claims = Claim.objects.filter(created_at__year=year, created_at__month=month_num)
+        payments = Payments.objects.filter(paid_at__year=year, paid_at__month=month_num)
+
+        total_claims = claims.aggregate(total=Sum('amount'))['total'] or 0
+        total_paid = claims.filter(status='paid').aggregate(total=Sum('amount'))['total'] or 0
+        total_pending = claims.filter(status='pending').aggregate(total=Sum('amount'))['total'] or 0
+        number_of_payments = payments.count()
+
+        return Response({
+            "status":"success",
+            "message":"retrieved",
+            "data" : {
+                'total_claim_amount': total_claims,
+                'total_paid_amount': total_paid,
+                'total_pending_amount': total_pending,
+                'number_of_payments': number_of_payments,
+            }
         }, status=status.HTTP_200_OK)
     
     except Exception as e:
