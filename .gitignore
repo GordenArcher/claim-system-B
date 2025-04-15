@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Django stuff
+db.sqlite3
+*.sqlite3
+*.log
+logs/
+**/logs/
+*.pot
+*.pyc
+
+# Environment variables
+.env
+.env.*
+
+# System logs & backups
+*.log
+*.bak
+*.tmp
+
+# Media and static (if you're not versioning them)
+media/
+staticfiles/
+
+# IDEs & Editors
+.vscode/
+.idea/
+.DS_Store
+
+# OS
+Thumbs.db

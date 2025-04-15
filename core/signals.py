@@ -70,12 +70,12 @@ def log_user_login(sender, request, user, **kwargs):
 def log_user_logout(sender, request, user, **kwargs):
     try:
         logout_time = timezone.now()
-        login_time_str = request.session.get('login_time')  # Retrieve stored login time
+        login_time_str = request.session.get('login_time') 
         session_duration = 'Unknown'
 
         if login_time_str:
             try:
-                login_time = timezone.datetime.fromisoformat(login_time_str)  # Convert to datetime object
+                login_time = timezone.datetime.fromisoformat(login_time_str) 
                 duration = logout_time - login_time
                 hours, remainder = divmod(duration.seconds, 3600)
                 minutes, seconds = divmod(remainder, 60)
@@ -114,7 +114,7 @@ def log_claim_status_change(sender, instance, **kwargs):
             logger.info(
                 f"Claim Status Change: "
                 f"Claim Number={instance.claim_number}, "
-                f"Staff ID={instance.staff.staff_id}, "
+                f"Staff Number={instance.staff_number}, "
                 f"Previous Status={old_instance.status}, "
                 f"New Status={instance.status}, "
                 f"Timestamp={timezone.now()}"
@@ -127,12 +127,12 @@ def log_new_claim_creation(sender, instance, created, **kwargs):
     if created:
         logger.info(
             f"New Claim Creation: "
-            f"Claim Number={instance.claim_number}, "
-            f"Staff ID={instance.staff.staff_id}, "
+            f"Request Number={instance.claim_number}, "
+            f"Staff Number={instance.staff_number}, "
             f"Amount={instance.amount}, "
-            f"Reason={instance.claim_reason}, "
+            f"Description={instance.claim_reason}, "
             f"Initial Status={instance.status}, "
-            f"Timestamp={timezone.now()}"
+            f"Timestamp={instance.created_at}"
         )
 
 @receiver(post_save, sender=Payments)
@@ -141,8 +141,10 @@ def log_new_payment(sender, instance, created, **kwargs):
         logger.info(
             f"New Payment Recording: "
             f"Payment ID={instance.payment_id}, "
-            f"Claim Number={instance.claim.claim_number}, "
-            f"Paid By Staff ID={instance.paid_by.staff_id}, "
+            f"Request Number={instance.claim.claim_number}, "
+            f"Staff Number={instance.claim.staff_number}, "
+            f"Claim Owner={instance.claim.full_name}, "
+            f"Claim Paid By={instance.paid_by.employee.username}, "
             f"Claim Amount={instance.claim.amount}, "
             f"Payment Timestamp={instance.paid_at}"
         )

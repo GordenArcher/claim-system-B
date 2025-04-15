@@ -16,7 +16,7 @@ urlpatterns = [
     path("claims/paid/today/", views.get_today_paid_claims),
     path("all_claims/", views.get_all_claims),
     path("recent_claim/", views.get_recent_claims),
-    path("claim/verify/<int:claim_number>/", views.verify_staff_claim),
+    path("claim/verify/", views.verify_staff_claim),
     path("staff/claims/", views.get_staff_claims),
     path("claim/staff/pay/<int:claim_number>/", views.pay_claim),
     path("claim/payments/history/", views.get_all_payments),
@@ -34,4 +34,5 @@ urlpatterns = [
     path("system/logs/", views.get_all_logs),
     path("system_audits/", views.get_audits),
     path("claim_processed/", views.get_top_claim_processors),
+    path("get_query-dataa/", views.get_data_based_on_month),
 ]
