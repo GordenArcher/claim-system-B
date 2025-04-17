@@ -4,3 +4,5 @@
 [2025-03-28 12:36:11] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.05, 'messageId': '16770c36-d675-4b5f-8ba9-1d2f07e5fd11', 'status': 0, 'statusDescription': None, 'networkId': ''}
 [2025-04-15 00:03:44] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.03, 'messageId': '99cf8bec-ca9c-4bf8-bcec-f5265c4c27d4', 'status': 0, 'statusDescription': None, 'networkId': ''}
 [2025-04-15 00:04:06] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.03, 'messageId': '4f3b562c-6f35-4653-b9ca-b881068d3b4f', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-04-16 22:21:14] ERROR | communications | views | Failed to send SMS to 0208729505. Response: {'rate': 0.03, 'messageId': 'eeeccd76-7b57-44ed-83ef-ead80e2441d7', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-04-16 22:21:15] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.03, 'messageId': 'a6411ef1-be00-44a0-8ece-2d45682d662c', 'status': 0, 'statusDescription': None, 'networkId': ''}

@@ -299,11 +299,13 @@ def create_claim(request):
     date = data.get("posting_date")
     phone_number = data.get("phone_number")
     staff_number = data.get("employee_number")
+    claim_status = data.get("status", 'pending')
     claim_number = data.get("request_number")
     claim_amount = data.get("claim_amount")
     claim_reason = data.get("claim_reason")
+    paid_at = data.get("payment_date")
 
-    if not all([full_name, date, phone_number, staff_number, claim_number, claim_amount, claim_reason]):
+    if not all([full_name, date, phone_number, claim_status, staff_number, claim_number, claim_amount, claim_reason]):
         return Response({
             "status": "error",
             "message": "All fields are required"
@@ -330,8 +332,9 @@ def create_claim(request):
             phone_number=phone_number,
             amount=claim_amount,
             claim_reason=claim_reason,
-            status="pending",
-            created_at=date
+            status=claim_status,
+            created_at=date,
+            payment_date=paid_at or None,
         )
 
         claim._current_user = request.user
@@ -554,6 +557,7 @@ def pay_claim(request, claim_number):
         
         claim.status = "paid"
         claim.payment_date = timezone.now()
+        claim.updated_at = timezone.now()
         claim.save()
 
         accountant = Accountant.objects.filter(employee=request.user).first()
@@ -617,32 +621,6 @@ def get_all_paid_claims(request):
             "message": f"An error occurred: {str(e)}"
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
-
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_today_paid_claims(request):
-    try:
-        today = now().date()
-
-        paid_claims_today = Claim.objects.filter(
-            status="paid", created_at__date=today
-        ).order_by('-created_at')
-
-        claim_serializer = ClaimSerializer(paid_claims_today, many=True)
-
-        return Response({
-            "status": "success",
-            "message": "Paid history retrieved",
-            "paid_claims": claim_serializer.data
-        }, status=status.HTTP_200_OK)
-
-    except Exception as e:
-        return Response({
-            "status": "error",
-            "message": f"An error occurred: {str(e)}"
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -821,9 +799,9 @@ def get_all_users(request):
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_staff(request, staff_id):
+def delete_staff(request, staff_number):
     try:
-        staff = Accountant.objects.get(staff_id=staff_id)
+        staff = Accountant.objects.get(staff_number=staff_number)
         staff_name_f = staff.employee.username
         user = staff.employee
 

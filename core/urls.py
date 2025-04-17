@@ -13,7 +13,6 @@ urlpatterns = [
     path("create_claim/", views.create_claim),
     path("pending_claims/", views.get_all_pending_claims),
     path("claims/paid/history/", views.get_all_paid_claims),
-    path("claims/paid/today/", views.get_today_paid_claims),
     path("all_claims/", views.get_all_claims),
     path("recent_claim/", views.get_recent_claims),
     path("claim/verify/", views.verify_staff_claim),
