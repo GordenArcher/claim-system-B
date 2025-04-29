@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Accountant, Claim, Payments, AuditTrail
+from .models import Accountant, Claim, Payments, AuditTrail, Documents
 
 # Register your models here.
 class AccountantAdmin(admin.ModelAdmin):
@@ -38,6 +38,11 @@ class AuditTrailAdmin(admin.ModelAdmin):
     readonly_fields = ['id', 'timestamp']
 
 
+class DocumentsAdmin(admin.ModelAdmin):
+    list_display = ['excel', 'date_uploaded']
+    list_filter = ['excel', 'date_uploaded']
+    search_fields = ['excel', 'date_uploaded']
+    readonly_fields = ['date_uploaded']
 
     
 
@@ -45,3 +50,4 @@ admin.site.register(Accountant, AccountantAdmin)
 admin.site.register(Claim, ClaimAdmin)    
 admin.site.register(Payments, PaymentsAdmin)    
 admin.site.register(AuditTrail, AuditTrailAdmin)    
+admin.site.register(Documents, DocumentsAdmin)    

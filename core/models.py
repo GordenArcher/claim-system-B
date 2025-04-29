@@ -132,7 +132,6 @@ class Accountant(models.Model):
 class Claim(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Pending'),
-        ('approved', 'Approved'),
         ('paid', 'Paid'),
     ]
     full_name = models.CharField(max_length=100, null=True, blank=True)
@@ -292,3 +291,8 @@ class Payments(models.Model):
             action='delete',
             changes=deletion_details
         )
+
+
+class Documents(models.Model):
+    excel = models.FileField(upload_to='documents/excel', null=True, blank=True)
+    date_uploaded = models.DateTimeField(auto_now_add=True, blank=True, null=True)     

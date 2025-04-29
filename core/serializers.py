@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Claim, Accountant, AuditTrail
+from .models import Claim, Accountant, AuditTrail, Documents
 from django.contrib.auth.models import User
 
 
@@ -8,7 +8,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'email']
     
-
 
 class StaffSerializer(serializers.ModelSerializer):
     employee = EmployeeSerializer()
@@ -29,3 +28,9 @@ class AuditTrailSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuditTrail
         fields = ['id', 'user', 'full_name', 'entity_type', 'entity_id', 'action', 'changes', 'timestamp']
+
+
+class DocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Documents
+        fields = ['id', 'excel', 'date_uploaded']        

@@ -10,7 +10,7 @@ urlpatterns = [
     path("auth/logout/", views.logout),
     path("auth/refresh/", customTokenRefreshView.as_view(), name='refresh_token'),
     path("auth/isAuthenticated/", views.check_authentication),
-    path("create_claim/", views.create_claim),
+    path("upload_claim/", views.upload_claims_from_excel),
     path("pending_claims/", views.get_all_pending_claims),
     path("claims/paid/history/", views.get_all_paid_claims),
     path("all_claims/", views.get_all_claims),

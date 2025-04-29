@@ -8734,3 +8734,710 @@ requests.exceptions.ConnectionError: HTTPSConnectionPool(host='smsc.hubtel.com',
 [2025-04-16 22:38:43] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 357
 [2025-04-17 02:01:25] INFO | core | signals | New Claim Creation: Request Number=1238166, Staff Number=123456, Amount=9976, Description=Allowance, Initial Status=pending, Timestamp=2025-03-30T00:00:00Z
 [2025-04-17 02:03:10] INFO | core | signals | New Claim Creation: Request Number=125497392, Staff Number=221356, Amount=20, Description=Food, Initial Status=pending, Timestamp=2025-03-30T00:00:00Z
+[2025-04-21 13:38:14] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-04-21 13:38:14] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-04-21 13:38:14] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-04-21 13:38:14] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-04-21 13:38:14] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-04-21 13:38:14] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-04-21 13:38:14] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-04-21 13:38:14] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-04-21 13:38:22] WARNING | core | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-04-21 13:38:22.074765+00:00, Failure Reason=Invalid Credentials
+[2025-04-21 13:38:22] WARNING | django | views | Failed login attempt for email: archergorden@gmail.com
+[2025-04-21 13:38:22] WARNING | django.request | log | Bad Request: /api/v1/auth/login/
+[2025-04-21 13:38:22] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 400 50
+[2025-04-21 13:38:24] WARNING | core | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-04-21 13:38:24.170688+00:00, Failure Reason=Invalid Credentials
+[2025-04-21 13:38:24] WARNING | django | views | Failed login attempt for email: archergorden@gmail.com
+[2025-04-21 13:38:24] WARNING | django.request | log | Bad Request: /api/v1/auth/login/
+[2025-04-21 13:38:24] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 400 50
+[2025-04-21 13:38:28] WARNING | django.request | log | Not Found: /favicon.ico
+[2025-04-21 13:38:28] WARNING | django.server | basehttp | "GET /favicon.ico HTTP/1.1" 404 2368
+[2025-04-21 13:38:36] WARNING | core | signals | Login Failure: Attempted Username=admin, Timestamp=2025-04-21 13:38:36.954875+00:00, Failure Reason=Invalid Credentials
+[2025-04-21 13:38:42] WARNING | core | signals | Login Failure: Attempted Username=admin, Timestamp=2025-04-21 13:38:42.850687+00:00, Failure Reason=Invalid Credentials
+[2025-04-21 13:39:32] INFO | core | signals | User Creation: Username=admin, Email=archergorden@gmail.com, First Name=, Last Name=, Is Staff=True, Date Joined=2025-04-21 13:39:31.813179+00:00
+[2025-04-21 13:39:46] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-04-21 13:39:46.062097+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-04-21 13:39:53] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-04-21 13:39:53] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-04-21 13:39:54] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-04-21 13:39:54] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-04-21 13:39:58] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-04-21 13:39:58] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-04-21 13:40:04] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-04-21 13:40:04] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-04-21 13:42:40] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-04-21 13:42:40] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-04-21 13:42:40] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-04-21 13:42:40] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-04-21 13:42:40] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-04-21 13:42:40] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-04-21 13:42:40] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-04-21 13:42:40] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-04-21 13:42:41] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-04-21 13:42:41] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-04-21 13:42:41] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-04-21 13:42:41] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-04-21 13:42:41] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-04-21 13:42:41] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-04-21 13:42:41] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-04-21 13:42:41] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-04-21 13:42:54] WARNING | core | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-04-21 13:42:54.122232+00:00, Failure Reason=Invalid Credentials
+[2025-04-21 13:42:54] WARNING | django | views | Failed login attempt for email: archergorden@gmail.com
+[2025-04-21 13:42:54] WARNING | django.request | log | Bad Request: /api/v1/auth/login/
+[2025-04-21 13:42:54] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 400 50
+[2025-04-21 13:42:57] WARNING | core | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-04-21 13:42:57.640055+00:00, Failure Reason=Invalid Credentials
+[2025-04-21 13:42:58] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-04-21 13:42:58.294717+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-04-21 13:43:29] WARNING | django.request | log | Bad Request: /api/v1/staff/change_password/
+[2025-04-21 13:43:29] WARNING | django.server | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 60
+[2025-04-21 13:43:47] WARNING | django.request | log | Bad Request: /api/v1/staff/change_password/
+[2025-04-21 13:43:47] WARNING | django.server | basehttp | "POST /api/v1/staff/change_password/ HTTP/1.1" 400 86
+[2025-04-21 13:44:13] INFO | core | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-04-21 13:44:13.913234+00:00, Session Duration=Unknown
+[2025-04-21 13:44:20] WARNING | core | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-04-21 13:44:20.284930+00:00, Failure Reason=Invalid Credentials
+[2025-04-21 13:44:20] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-04-21 13:44:20.937866+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-04-22 17:12:02] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-04-22 17:12:02.912509+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-04-22 17:13:06] INFO | core | signals | New Claim Creation: Request Number=0453882, Staff Number=123456, Amount=50, Description=Lunch, Initial Status=pending, Timestamp=2025-03-30T00:00:00Z
+[2025-04-22 17:13:47] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:13:47] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:16:27] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:16:27] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:17:53] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:17:53] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:18:56] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:18:56] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:19:00] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:19:00] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:19:04] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:19:04] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:19:24] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:19:24] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:19:50] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:19:50] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:20:18] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:20:18] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:20:28] WARNING | django.request | log | Bad Request: /api/v1/create_claim/
+[2025-04-22 17:20:28] WARNING | django.server | basehttp | "POST /api/v1/create_claim/ HTTP/1.1" 400 366
+[2025-04-22 17:20:59] INFO | core | signals | New Claim Creation: Request Number=04538812, Staff Number=123456, Amount=100, Description=Breakfast, Initial Status=paid, Timestamp=2025-04-14T00:00:00Z
+[2025-04-22 17:27:08] INFO | core | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-04-22 17:27:08.677823+00:00, Session Duration=0h 15m 5s
+[2025-04-29 14:22:31] WARNING | django.request | log | Not Found: /favicon.ico
+[2025-04-29 14:22:31] WARNING | django.server | basehttp | "GET /favicon.ico HTTP/1.1" 404 2368
+[2025-04-29 14:22:54] WARNING | core | signals | Login Failure: Attempted Username=admin, Timestamp=2025-04-29 14:22:54.869937+00:00, Failure Reason=Invalid Credentials
+[2025-04-29 14:23:00] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-04-29 14:23:00.246701+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-04-29 14:23:00] WARNING | django.request | log | Not Found: /admin/paulinaBE/payments/
+[2025-04-29 14:23:00] WARNING | django.server | basehttp | "GET /admin/paulinaBE/payments/ HTTP/1.1" 404 6479
+[2025-04-29 15:09:11] INFO | core | signals | New Claim Creation: Request Number=CLM0001, Staff Number=EMP001, Amount=150.0, Description=Medical reimbursement, Initial Status=pending, Timestamp=2024-12-15 00:00:00
+[2025-04-29 15:09:11] INFO | core | signals | New Claim Creation: Request Number=CLM0002, Staff Number=EMP002, Amount=200.0, Description=Travel expenses, Initial Status=paid, Timestamp=2025-01-05 00:00:00
+[2025-04-29 15:09:11] INFO | core | signals | New Claim Creation: Request Number=CLM0003, Staff Number=EMP003, Amount=95.5, Description=Office supplies, Initial Status=pending, Timestamp=2025-01-10 00:00:00
+[2025-04-29 15:09:11] INFO | core | signals | New Claim Creation: Request Number=CLM0004, Staff Number=EMP004, Amount=350.0, Description=Client meeting costs, Initial Status=paid, Timestamp=2025-01-15 00:00:00
+[2025-04-29 15:14:12] WARNING | django.request | log | Bad Request: /api/v1/upload_claim/
+[2025-04-29 15:14:12] WARNING | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 400 87
+[2025-04-29 15:14:44] WARNING | django.request | log | Bad Request: /api/v1/upload_claim/
+[2025-04-29 15:14:44] WARNING | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 400 87
+[2025-04-29 15:14:57] WARNING | django.request | log | Bad Request: /api/v1/upload_claim/
+[2025-04-29 15:14:57] WARNING | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 400 49
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1000, Staff Number=EMP200, Amount=100, Description=Reason for claim 0, Initial Status=pending, Timestamp=2024-01-01 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1001, Staff Number=EMP201, Amount=110, Description=Reason for claim 1, Initial Status=paid, Timestamp=2024-01-02 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1002, Staff Number=EMP202, Amount=120, Description=Reason for claim 2, Initial Status=pending, Timestamp=2024-01-03 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1003, Staff Number=EMP203, Amount=130, Description=Reason for claim 3, Initial Status=paid, Timestamp=2024-01-04 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1004, Staff Number=EMP204, Amount=140, Description=Reason for claim 4, Initial Status=pending, Timestamp=2024-01-05 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1005, Staff Number=EMP205, Amount=150, Description=Reason for claim 5, Initial Status=paid, Timestamp=2024-01-06 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1006, Staff Number=EMP206, Amount=160, Description=Reason for claim 6, Initial Status=pending, Timestamp=2024-01-07 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1007, Staff Number=EMP207, Amount=170, Description=Reason for claim 7, Initial Status=paid, Timestamp=2024-01-08 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1008, Staff Number=EMP208, Amount=180, Description=Reason for claim 8, Initial Status=pending, Timestamp=2024-01-09 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1009, Staff Number=EMP209, Amount=190, Description=Reason for claim 9, Initial Status=paid, Timestamp=2024-01-10 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1010, Staff Number=EMP210, Amount=200, Description=Reason for claim 10, Initial Status=pending, Timestamp=2024-01-11 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1011, Staff Number=EMP211, Amount=210, Description=Reason for claim 11, Initial Status=paid, Timestamp=2024-01-12 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1012, Staff Number=EMP212, Amount=220, Description=Reason for claim 12, Initial Status=pending, Timestamp=2024-01-13 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1013, Staff Number=EMP213, Amount=230, Description=Reason for claim 13, Initial Status=paid, Timestamp=2024-01-14 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1014, Staff Number=EMP214, Amount=240, Description=Reason for claim 14, Initial Status=pending, Timestamp=2024-01-15 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1015, Staff Number=EMP215, Amount=250, Description=Reason for claim 15, Initial Status=paid, Timestamp=2024-01-16 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1016, Staff Number=EMP216, Amount=260, Description=Reason for claim 16, Initial Status=pending, Timestamp=2024-01-17 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1017, Staff Number=EMP217, Amount=270, Description=Reason for claim 17, Initial Status=paid, Timestamp=2024-01-18 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1018, Staff Number=EMP218, Amount=280, Description=Reason for claim 18, Initial Status=pending, Timestamp=2024-01-19 00:00:00
+[2025-04-29 15:30:19] INFO | core | signals | New Claim Creation: Request Number=REQ1019, Staff Number=EMP219, Amount=290, Description=Reason for claim 19, Initial Status=paid, Timestamp=2024-01-20 00:00:00
+[2025-04-29 15:48:34] ERROR | django.request | log | Internal Server Error: /api/v1/upload_claim/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/macbookpro/Documents/claim/claim_management/core/views.py", line 313, in upload_claims_from_excel
+    Documents.objects.create(excel=df)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1708, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/files.py", line 327, in pre_save
+    if file.name is None and file._file is not None:
+       ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'name'. Did you mean: 'rename'?
+[2025-04-29 15:48:34] ERROR | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 500 161593
+[2025-04-29 15:48:41] ERROR | django.request | log | Internal Server Error: /api/v1/upload_claim/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/macbookpro/Documents/claim/claim_management/core/views.py", line 313, in upload_claims_from_excel
+    Documents.objects.create(excel=df)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1708, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/files.py", line 327, in pre_save
+    if file.name is None and file._file is not None:
+       ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'name'. Did you mean: 'rename'?
+[2025-04-29 15:48:41] ERROR | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 500 161593
+[2025-04-29 15:49:42] ERROR | django.request | log | Internal Server Error: /api/v1/upload_claim/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/macbookpro/Documents/claim/claim_management/core/views.py", line 313, in upload_claims_from_excel
+    Documents.objects.create(excel=df)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1708, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/files.py", line 327, in pre_save
+    if file.name is None and file._file is not None:
+       ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'name'. Did you mean: 'rename'?
+[2025-04-29 15:49:42] ERROR | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 500 161593
+[2025-04-29 15:49:56] ERROR | django.request | log | Internal Server Error: /api/v1/upload_claim/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/macbookpro/Documents/claim/claim_management/core/views.py", line 313, in upload_claims_from_excel
+    Documents.objects.create(excel=df)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1708, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/files.py", line 327, in pre_save
+    if file.name is None and file._file is not None:
+       ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'name'. Did you mean: 'rename'?
+[2025-04-29 15:49:56] ERROR | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 500 161593
+[2025-04-29 15:54:54] ERROR | django.request | log | Internal Server Error: /api/v1/upload_claim/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/macbookpro/Documents/claim/claim_management/core/views.py", line 313, in upload_claims_from_excel
+    Documents.objects.create(excel=df)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1708, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/files.py", line 327, in pre_save
+    if file.name is None and file._file is not None:
+       ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'name'. Did you mean: 'rename'?
+[2025-04-29 15:54:54] ERROR | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 500 161495
+[2025-04-29 16:05:34] ERROR | django.request | log | Internal Server Error: /api/v1/upload_claim/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/macbookpro/Documents/claim/claim_management/core/views.py", line 313, in upload_claims_from_excel
+    Documents.objects.create(excel=df)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1708, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/files.py", line 327, in pre_save
+    if file.name is None and file._file is not None:
+       ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'name'. Did you mean: 'rename'?
+[2025-04-29 16:05:34] ERROR | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 500 161741
+[2025-04-29 16:08:50] ERROR | django.request | log | Internal Server Error: /api/v1/upload_claim/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/Users/macbookpro/Documents/claim/claim_management/core/views.py", line 319, in upload_claims_from_excel
+    Documents.objects.create(excel=df)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1835, in execute_sql
+    for sql, params in self.as_sql():
+                       ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1760, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1708, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/django/db/models/fields/files.py", line 327, in pre_save
+    if file.name is None and file._file is not None:
+       ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/core/generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'name'. Did you mean: 'rename'?
+[2025-04-29 16:08:50] ERROR | django.server | basehttp | "POST /api/v1/upload_claim/ HTTP/1.1" 500 161906

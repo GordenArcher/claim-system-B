@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Claim, Accountant, Payments, AuditTrail
+from .models import Claim, Accountant, Payments, AuditTrail, Documents
 from .serializers import ClaimSerializer, StaffSerializer, AuditTrailSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
@@ -20,6 +20,9 @@ from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
 import requests
 from datetime import datetime, timedelta
+import pandas as pd
+import io
+from django.core.files import File
 from django.db.models import Sum
 from django.db.models.functions import TruncMonth
 from django.db.models import Count
@@ -292,64 +295,96 @@ This function create or initiates a new claim for a staff by collecting their dt
 """
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_claim(request):
-    data = request.data
+def upload_claims_from_excel(request):
+    file = request.FILES.get('file')
 
-    full_name = data.get("full_name")
-    date = data.get("posting_date")
-    phone_number = data.get("phone_number")
-    staff_number = data.get("employee_number")
-    claim_status = data.get("status", 'pending')
-    claim_number = data.get("request_number")
-    claim_amount = data.get("claim_amount")
-    claim_reason = data.get("claim_reason")
-    paid_at = data.get("payment_date")
-
-    if not all([full_name, date, phone_number, claim_status, staff_number, claim_number, claim_amount, claim_reason]):
+    if not file:
         return Response({
-            "status": "error",
-            "message": "All fields are required"
-        }, status=status.HTTP_400_BAD_REQUEST)
+            "status": "error", 
+            "message": "No file uploaded"
+            }, status=status.HTTP_400_BAD_REQUEST)
 
     try:
-        if Claim.objects.filter(claim_number=claim_number).exists():
-            existing_claim = Claim.objects.get(claim_number=claim_number)
-            serialized_claim = ClaimSerializer(existing_claim)
-            
-            return Response({
-                "status": "error",
-                "message": f"Claim {claim_number} already exists.",
-                "type":"duplicate",
-                "claim": serialized_claim.data
-            }, status=status.HTTP_400_BAD_REQUEST)
-        
-
-
-        claim = Claim.objects.create(
-            full_name=full_name,
-            staff_number=staff_number,
-            claim_number=claim_number,
-            phone_number=phone_number,
-            amount=claim_amount,
-            claim_reason=claim_reason,
-            status=claim_status,
-            created_at=date,
-            payment_date=paid_at or None,
-        )
-
-        claim._current_user = request.user
-        claim.save()
-        
-        return Response({ 
-            "status": "success",
-            "message": "Claim Submitted successfully!",
-        }, status=status.HTTP_201_CREATED)
-
+        df = pd.read_excel(file, engine='openpyxl')
     except Exception as e:
         return Response({
-            "status": "error",
-            "message": str(e)
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            "status": "error", 
+            "message": f"Invalid Excel file"
+            }, status=status.HTTP_400_BAD_REQUEST)
+    
+
+    output = io.BytesIO() 
+    df.to_excel(output, index=False, engine='openpyxl')
+    output.seek(0)
+
+    Documents.objects.create(excel=File(output, name="claims.xlsx"))
+
+    created = 0
+    duplicates = []
+    errors = []
+
+    for index, row in df.iterrows():
+        try:
+            full_name = row.get("full_name")
+            date = row.get("posting_date")
+            phone_number = row.get("phone_number")
+            staff_number = row.get("employee_number")
+            claim_status = row.get("status", "pending")
+            claim_number = row.get("request_number")
+            claim_amount = row.get("claim_amount")
+            claim_reason = row.get("claim_reason")
+            paid_at = row.get("payment_date")
+
+            if not all([full_name, date, phone_number, staff_number, claim_number, claim_amount, claim_reason]):
+                errors.append({"row": index + 2, "error": "Missing required fields"})
+                continue
+
+            if Claim.objects.filter(claim_number=claim_number).exists():
+                duplicates.append(claim_number)
+                continue
+
+            claim = Claim.objects.create(
+                full_name=full_name,
+                staff_number=staff_number,
+                claim_number=claim_number,
+                phone_number=phone_number,
+                amount=claim_amount,
+                claim_reason=claim_reason,
+                status=claim_status,
+                created_at=parse_date(date),
+                payment_date=parse_date(paid_at),
+            )
+
+            if paid_at:
+                Payments.objects.create(claim=claim, paid_by=request.user)
+
+
+            claim._current_user = request.user  
+            claim.save()
+            created += 1
+
+        except Exception as e:
+            errors.append({"row": index + 2, "error": str(e)})
+
+    return Response({
+        "status": "success",
+        "message": f"{created} claims created",
+        "duplicates": duplicates,
+        "errors": errors
+    }, status=status.HTTP_201_CREATED)
+
+
+def parse_date(value):
+    if pd.isnull(value):
+        return None
+    if isinstance(value, datetime):
+        return value
+    try:
+        return pd.to_datetime(value)
+    except:
+        return None
+    
+
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
