@@ -99,7 +99,7 @@ class Accountant(models.Model):
             AuditTrail.objects.create(
                 user=current_user,
                 entity_type='staff',
-                entity_id=self.id,
+                entity_id=self.pk,
                 action=action,
                 changes=changes
             )
@@ -113,6 +113,7 @@ class Accountant(models.Model):
         except User.DoesNotExist:
             current_user = None
 
+        entity_id=self.pk,
         deletion_details = {
             'staff_number': self.staff_number,
             'role': self.role,
@@ -124,7 +125,7 @@ class Accountant(models.Model):
         AuditTrail.objects.create(
             user=current_user,
             entity_type='staff',
-            entity_id=self.id,
+            entity_id=entity_id,
             action='delete',
             changes=deletion_details
         )
@@ -191,7 +192,7 @@ class Claim(models.Model):
                 user=current_user,
                 full_name=self.full_name,
                 entity_type='claim',
-                entity_id=self.id,
+                entity_id=self.pk,
                 action=action,
                 changes=changes
             )
@@ -205,6 +206,7 @@ class Claim(models.Model):
         except User.DoesNotExist:
             current_user = None
 
+        entity_id = self.pk
         deletion_details = {
             'claim_number': self.claim_number,
             'amount': float(self.amount),
@@ -218,7 +220,7 @@ class Claim(models.Model):
             user=current_user,
             full_name=self.full_name,
             entity_type='claim',
-            entity_id=self.id,
+            entity_id=entity_id,
             action='delete',
             changes=deletion_details
         )
@@ -279,7 +281,7 @@ class Payments(models.Model):
         deletion_details = {
             'payment_id': self.payment_id,
             'claim_number': self.claim.claim_number,
-            'paid_by': self.paid_by.staff_id
+            'paid_by': self.paid_by.staff_number if self.paid_by else None
         }
 
         super().delete(*args, **kwargs)

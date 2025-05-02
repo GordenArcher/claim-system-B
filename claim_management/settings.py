@@ -82,7 +82,7 @@ CORS_ALLOW_HEADERS = (
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://claim-system-frontend-v1.vercel.app"
+    "https://claim-system-frontend-v1.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

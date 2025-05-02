@@ -29,6 +29,8 @@ from django.db.models import Count
 from django.db.models.functions import ExtractWeekDay
 from django.db.models import Avg, F, ExpressionWrapper, fields, FloatField, Count
 import logging
+from logging.handlers import TimedRotatingFileHandler
+import os
 logger = logging.getLogger('custom_logger')
 logger = logging.getLogger('django')
 
@@ -303,6 +305,8 @@ def upload_claims_from_excel(request):
             "status": "error", 
             "message": "No file uploaded"
             }, status=status.HTTP_400_BAD_REQUEST)
+    
+
 
     try:
         df = pd.read_excel(file, engine='openpyxl')
@@ -316,8 +320,6 @@ def upload_claims_from_excel(request):
     output = io.BytesIO() 
     df.to_excel(output, index=False, engine='openpyxl')
     output.seek(0)
-
-    Documents.objects.create(excel=File(output, name="claims.xlsx"))
 
     created = 0
     duplicates = []
@@ -355,8 +357,9 @@ def upload_claims_from_excel(request):
                 payment_date=parse_date(paid_at),
             )
 
-            if paid_at:
-                Payments.objects.create(claim=claim, paid_by=request.user)
+            if claim.payment_date and claim.status.lower() != "pending":
+                accountant = Accountant.objects.get(employee=request.user)
+                Payments.objects.create(claim=claim, paid_by=accountant)
 
 
             claim._current_user = request.user  
@@ -365,6 +368,9 @@ def upload_claims_from_excel(request):
 
         except Exception as e:
             errors.append({"row": index + 2, "error": str(e)})
+
+
+    Documents.objects.create(excel=file)
 
     return Response({
         "status": "success",
@@ -465,7 +471,7 @@ def verify_staff_claim(request):
         if not query_data:
             return Response({
                 "status": "error",
-                "message": "No claim_data provided."
+                "message": "No claim data provided."
             }, status=status.HTTP_400_BAD_REQUEST)
 
         single_claim = Claim.objects.filter(claim_number=query_data).first()
@@ -500,44 +506,33 @@ def verify_staff_claim(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 """ 
-This function queries a specific staff's claims they made either paid or pending, i.e ( a staff's history claims)
+This function deletes a claim
 """
 
-@api_view(['GET'])
+@api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def get_staff_claims(request):
+def delete_claim(request, request_number):
     try:
-        staff = get_object_or_404(Accountant, employee=request.user)
 
-        if staff:
-            get_claims = Claim.objects.filter(staff=staff)
-
-            if not get_claims.exists():
-                return Response({
-                    "status": "error",
-                    "message": "No claims found for this staff"
-                }, status=status.HTTP_404_NOT_FOUND)
-
-            claims_serializer = ClaimSerializer(get_claims, many=True)
-
+        try:
+            claim = Claim.objects.get(claim_number=request_number)
+        except Claim.DoesNotExist:
             return Response({
-                "status": "success",
-                "message": "Claims retrieved",
-                "data": claims_serializer.data
-            }, status=status.HTTP_200_OK)
-        
-        else:
-            return Response({
-                "status": "error",
-                "message": f"staff not found",
+                "status":"error",
+                "message":"claim not found"
             }, status=status.HTTP_400_BAD_REQUEST)
+        
+        claim.delete()
+        return Response({
+            "status":"error",
+            "message":f"{request_number} has been deleted",
+        },status=status.HTTP_200_OK)
 
-    
     except Exception as e:
         return Response({
             "status": "error",
             "message": f"An unexpected error occurred: {e}",
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        },status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
 
 
 sms_logger = logging.getLogger('communications')
@@ -631,8 +626,7 @@ def pay_claim(request, claim_number):
         return Response({
             "status": "error", 
             "message": f"An error occurred: {str(e)}"
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
 
 
 @api_view(['GET'])
@@ -1070,28 +1064,57 @@ def get_claims_summary(request):
         return Response({'error': str(e)}, status=500)
     
 
-import os
+def get_logger():
+    log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'logs')
+    os.makedirs(log_dir, exist_ok=True)
+
+    log_path = os.path.join(log_dir, 'system_logs.log')
+
+    handler = TimedRotatingFileHandler(
+        filename=log_path,
+        when='midnight',
+        interval=1,
+        backupCount=7  # Keep logs for 7 days
+    )
+    handler.suffix = "%Y-%m-%d"
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+
+    logger = logging.getLogger('system_logs')
+    logger.setLevel(logging.INFO)
+
+    if not logger.handlers:
+        logger.addHandler(handler)
+
+    return logger
+
+logger = get_logger()
+
+
+import json
 
 def read_log_file(log_file_path, filter_func, limit=100):
-    """
-    Generic log file reading function with filtering and limiting
-    """
     try:
         if not os.path.exists(log_file_path):
             raise FileNotFoundError(f"Log file not found: {log_file_path}")
-        
+
         with open(log_file_path, 'r') as f:
             logs = []
             for line in (f.readlines()[-500:])[::-1]:
-                if filter_func(line):
-                    logs.append(line.strip())
-                    if len(logs) == limit:
-                        break
-            
+                try:
+                    log_entry = json.loads(line)  # Parse the JSON log entry
+                    if filter_func(log_entry):
+                        logs.append(log_entry)
+                        if len(logs) == limit:
+                            break
+                except json.JSONDecodeError:
+                    continue 
+
             return logs
     except (IOError, PermissionError) as e:
         logger.error(f"Error reading log file: {e}")
         return []
+
 
 
 
@@ -1101,22 +1124,14 @@ def get_all_logs(request):
     """
     Retrieve all system logs with optional filtering
     """
-    log_file_path = 'system_logs.log'
-    log_type = request.GET.get('type', None)
+    log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'logs', 'system_logs.log')
 
     def relevant_log_filter(log):
-        """
-        Filter function to return logs related to:
-        - "signals"
-        - "SMS Response" (Hubul's responses)
-        - "Failed to send SMS"
-        """
         keywords = ['signals', 'sms response', 'failed to send sms']
         return any(keyword in log.lower() for keyword in keywords)
 
     try:
         signal_logs = read_log_file(log_file_path, relevant_log_filter)
-        
         return Response({
             "status": "success",
             "message": "Signal logs retrieved",

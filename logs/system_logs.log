@@ -1,46 +1,8 @@
-2025-03-25 01:58:32,099 INFO autoreload Watching for file changes with StatReloader
-2025-03-25 02:01:35,632 INFO autoreload /Users/macbookpro/Documents/claim/claim_management/core/views.py changed, reloading.
-2025-03-25 02:01:36,786 INFO autoreload Watching for file changes with StatReloader
-2025-03-25 02:03:42,601 INFO autoreload /Users/macbookpro/Documents/claim/claim_management/core/apps.py changed, reloading.
-2025-03-25 02:03:43,662 INFO autoreload Watching for file changes with StatReloader
-2025-03-25 02:04:37,862 INFO autoreload /Users/macbookpro/Documents/claim/claim_management/core/apps.py changed, reloading.
-2025-03-25 02:04:38,840 INFO autoreload Watching for file changes with StatReloader
-2025-03-25 02:18:59,207 INFO autoreload Watching for file changes with StatReloader
-2025-03-25 02:19:30,675 INFO autoreload /Users/macbookpro/Documents/claim/claim_management/core/urls.py changed, reloading.
-2025-03-25 02:19:31,226 INFO autoreload Watching for file changes with StatReloader
-2025-03-25 02:19:38,303 INFO basehttp "GET /api/v1/get-logs/ HTTP/1.1" 200 17782
-2025-03-25 02:20:15,598 WARNING log Forbidden: /api/v1/auth/login/
-2025-03-25 02:20:15,598 WARNING basehttp "POST /api/v1/auth/login/ HTTP/1.1" 403 45
-2025-03-25 02:20:31,258 INFO basehttp "GET /api/v1/get-logs/ HTTP/1.1" 200 17782
-2025-03-25 02:20:50,076 INFO basehttp "OPTIONS /api/v1/auth/logout/ HTTP/1.1" 200 0
-2025-03-25 02:20:50,084 INFO signals User admin logged out
-2025-03-25 02:20:50,090 INFO basehttp "POST /api/v1/auth/logout/ HTTP/1.1" 200 51
-2025-03-25 02:20:50,117 INFO basehttp "GET /api/v1/get-csrf-token/ HTTP/1.1" 200 81
-2025-03-25 02:20:50,121 INFO basehttp "GET /api/v1/get-csrf-token/ HTTP/1.1" 200 81
-2025-03-25 02:20:53,641 INFO basehttp "GET /api/v1/get-logs/ HTTP/1.1" 200 17782
-2025-03-25 02:21:07,892 INFO basehttp "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
-2025-03-25 02:21:07,895 WARNING signals Failed login attempt for username: None
-2025-03-25 02:21:08,538 INFO signals User profile updated: admin
-2025-03-25 02:21:08,539 INFO signals Password changed for user: admin
-2025-03-25 02:21:08,539 INFO signals User admin logged in from 127.0.0.1
-2025-03-25 02:21:08,767 INFO basehttp "POST /api/v1/auth/login/ HTTP/1.1" 201 255
-2025-03-25 02:21:08,778 INFO basehttp "GET /api/v1/get-csrf-token/ HTTP/1.1" 200 81
-2025-03-25 02:21:08,784 INFO basehttp "GET /api/v1/get-csrf-token/ HTTP/1.1" 200 81
-2025-03-25 02:21:08,796 INFO basehttp "OPTIONS /api/v1/profile/get_user/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,798 INFO basehttp "OPTIONS /api/v1/pending_claims/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,812 INFO basehttp "OPTIONS /api/v1/claim/payments/history/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,812 INFO basehttp "OPTIONS /api/v1/all_claims/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,812 INFO basehttp "OPTIONS /api/v1/users/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,815 INFO basehttp "OPTIONS /api/v1/claims/paid/today/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,817 INFO basehttp "OPTIONS /api/v1/all_claims/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,817 INFO basehttp "OPTIONS /api/v1/reports/claims-summary/ HTTP/1.1" 200 0
-2025-03-25 02:21:08,839 INFO basehttp "GET /api/v1/profile/get_user/ HTTP/1.1" 200 257
-2025-03-25 02:21:08,881 INFO basehttp "GET /api/v1/claim/payments/history/ HTTP/1.1" 200 444
-2025-03-25 02:21:08,888 INFO basehttp "GET /api/v1/pending_claims/ HTTP/1.1" 200 103
-2025-03-25 02:21:08,888 INFO basehttp "GET /api/v1/users/ HTTP/1.1" 200 588
-2025-03-25 02:21:08,892 INFO basehttp "GET /api/v1/claims/paid/today/ HTTP/1.1" 200 72
-2025-03-25 02:21:08,902 INFO basehttp "GET /api/v1/all_claims/ HTTP/1.1" 200 444
-2025-03-25 02:21:08,909 INFO basehttp "GET /api/v1/reports/claims-summary/ HTTP/1.1" 200 170
-2025-03-25 02:21:08,918 INFO basehttp "GET /api/v1/all_claims/ HTTP/1.1" 200 444
-2025-03-25 02:21:12,845 INFO basehttp "GET /api/v1/get-logs/ HTTP/1.1" 200 17782
-2025-03-25 02:24:21,413 INFO autoreload /Users/macbookpro/Documents/claim/claim_management/claim_management/settings.py changed, reloading.
+2025-05-02 00:25:08,804 - INFO - User logged in: archergorden@gmail.com
+2025-05-02 02:35:02,026 - INFO - User logged out: archergorden@gmail.com
+2025-05-02 02:35:08,600 - INFO - User logged in: archergorden@gmail.com
+2025-05-02 02:48:45,289 - WARNING - Failed login attempt for email: archergorden@gmail.com
+2025-05-02 02:48:56,465 - INFO - User logged out: archergorden@gmail.com
+2025-05-02 02:49:02,411 - INFO - User logged in: archergorden@gmail.com
+2025-05-02 02:51:14,973 - ERROR - Error reading log file: Log file not found: /Users/macbookpro/Documents/claim/claim_management/core/logs/system_logs.log
+2025-05-02 02:51:16,701 - ERROR - Error reading log file: Log file not found: /Users/macbookpro/Documents/claim/claim_management/core/logs/system_logs.log
