@@ -1,8 +1,2 @@
-2025-05-02 00:25:08,804 - INFO - User logged in: archergorden@gmail.com
-2025-05-02 02:35:02,026 - INFO - User logged out: archergorden@gmail.com
-2025-05-02 02:35:08,600 - INFO - User logged in: archergorden@gmail.com
-2025-05-02 02:48:45,289 - WARNING - Failed login attempt for email: archergorden@gmail.com
-2025-05-02 02:48:56,465 - INFO - User logged out: archergorden@gmail.com
-2025-05-02 02:49:02,411 - INFO - User logged in: archergorden@gmail.com
-2025-05-02 02:51:14,973 - ERROR - Error reading log file: Log file not found: /Users/macbookpro/Documents/claim/claim_management/core/logs/system_logs.log
-2025-05-02 02:51:16,701 - ERROR - Error reading log file: Log file not found: /Users/macbookpro/Documents/claim/claim_management/core/logs/system_logs.log
+2025-05-15 12:46:35,316 - INFO - User logged in: archergorden@gmail.com
+2025-05-15 13:32:15,130 - INFO - User logged in: archergorden@gmail.com

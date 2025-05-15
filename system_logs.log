@@ -17,3 +17,31 @@
 [2025-05-09 14:00:43] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
 [2025-05-09 14:00:49] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
 [2025-05-09 14:00:49] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-05-15 12:46:34] WARNING | core | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-05-15 12:46:34.097267+00:00, Failure Reason=Invalid Credentials
+[2025-05-15 12:46:34] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-05-15 12:46:34.831767+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-05-15 12:46:37] WARNING | django.request | log | Not Found: /admin/paulinaBE/invoice/
+[2025-05-15 12:46:37] WARNING | django.server | basehttp | "GET /admin/paulinaBE/invoice/ HTTP/1.1" 404 6730
+[2025-05-15 12:46:38] WARNING | django.request | log | Not Found: /favicon.ico
+[2025-05-15 12:46:38] WARNING | django.server | basehttp | "GET /favicon.ico HTTP/1.1" 404 2537
+[2025-05-15 13:32:13] WARNING | core | signals | Login Failure: Attempted Username=Unknown, Timestamp=2025-05-15 13:32:13.979204+00:00, Failure Reason=Invalid Credentials
+[2025-05-15 13:32:14] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-05-15 13:32:14.780084+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-97441, Staff Number=4339, Amount=1074.52, Description=Office supplies, Initial Status=pending, Timestamp=2025-04-21 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-16192, Staff Number=8851, Amount=4264.28, Description=Client meeting, Initial Status=pending, Timestamp=2025-04-03 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-46016, Staff Number=7982, Amount=1986.68, Description=Client meeting, Initial Status=pending, Timestamp=2025-04-13 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-51855, Staff Number=3629, Amount=147.89, Description=Client meeting, Initial Status=pending, Timestamp=2025-04-28 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-46608, Staff Number=9888, Amount=4855.0, Description=Client meeting, Initial Status=pending, Timestamp=2025-05-02 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-51789, Staff Number=9656, Amount=1636.09, Description=Accommodation, Initial Status=pending, Timestamp=2025-03-25 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-71609, Staff Number=2320, Amount=326.25, Description=Remote work setup, Initial Status=pending, Timestamp=2025-05-05 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-99545, Staff Number=3526, Amount=859.87, Description=Fuel, Initial Status=pending, Timestamp=2025-05-10 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-98332, Staff Number=6867, Amount=310.88, Description=Remote work setup, Initial Status=pending, Timestamp=2025-04-06 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-26374, Staff Number=7567, Amount=1998.68, Description=Travel expense, Initial Status=pending, Timestamp=2025-05-04 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-72346, Staff Number=6971, Amount=4357.02, Description=Fuel, Initial Status=pending, Timestamp=2025-04-28 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-88930, Staff Number=8912, Amount=2055.57, Description=Internet data, Initial Status=pending, Timestamp=2025-03-22 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-23563, Staff Number=2082, Amount=877.13, Description=Medical reimbursement, Initial Status=pending, Timestamp=2025-04-15 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-57587, Staff Number=7151, Amount=4923.92, Description=Office supplies, Initial Status=pending, Timestamp=2025-04-28 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-34461, Staff Number=3628, Amount=3453.52, Description=Office supplies, Initial Status=pending, Timestamp=2025-05-09 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-21089, Staff Number=8789, Amount=1660.57, Description=Training, Initial Status=pending, Timestamp=2025-03-24 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-53240, Staff Number=5911, Amount=3022.77, Description=Other, Initial Status=pending, Timestamp=2025-04-30 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-41173, Staff Number=3650, Amount=4727.39, Description=Remote work setup, Initial Status=pending, Timestamp=2025-05-13 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-29118, Staff Number=2103, Amount=1615.48, Description=Client meeting, Initial Status=pending, Timestamp=2025-03-31 00:00:00
+[2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-15654, Staff Number=5561, Amount=4268.86, Description=Fuel, Initial Status=pending, Timestamp=2025-04-18 00:00:00
