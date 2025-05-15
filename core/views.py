@@ -327,14 +327,12 @@ def upload_claims_from_excel(request):
 
     for index, row in df.iterrows():
         try:
+            claim_number = row.get("Claim Request Number")
+            staff_number = row.get("Employee Number")
             full_name = row.get("Employee Name")
             date = row.get("Posting Date")
-            phone_number = row.get("phone_number") or None
-            staff_number = row.get("Employee Number")
-            claim_number = row.get("Claim Request Number")
-            claim_amount = row.get("Claim Amount")
             claim_reason = row.get("Claim Reason")
-            paid_at = row.get("Payment Date")
+            claim_amount = row.get("Claim Amount")
 
             if not all([full_name, date, staff_number, claim_number, claim_amount, claim_reason]):
                 errors.append({"row": index + 2, "error": "Missing required fields"})
@@ -348,12 +346,12 @@ def upload_claims_from_excel(request):
                 full_name=full_name,
                 staff_number=staff_number,
                 claim_number=claim_number,
-                phone_number=phone_number or None,
+                phone_number=None,
                 amount=claim_amount,
                 claim_reason=claim_reason,
                 status="pending",
                 created_at=parse_date(date),
-                payment_date=parse_date(paid_at),
+                payment_date=None,
             )
 
             if claim.payment_date and claim.status.lower() != "pending":

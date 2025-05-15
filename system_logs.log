@@ -45,3 +45,5 @@
 [2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-41173, Staff Number=3650, Amount=4727.39, Description=Remote work setup, Initial Status=pending, Timestamp=2025-05-13 00:00:00
 [2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-29118, Staff Number=2103, Amount=1615.48, Description=Client meeting, Initial Status=pending, Timestamp=2025-03-31 00:00:00
 [2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-15654, Staff Number=5561, Amount=4268.86, Description=Fuel, Initial Status=pending, Timestamp=2025-04-18 00:00:00
+[2025-05-15 13:50:51] WARNING | django.request | log | Not Found: /favicon.ico
+[2025-05-15 13:50:51] WARNING | django.server | basehttp | "GET /favicon.ico HTTP/1.1" 404 2537
