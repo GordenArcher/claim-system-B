@@ -354,10 +354,9 @@ def upload_claims_from_excel(request):
                 payment_date=None,
             )
 
-            if claim.payment_date and claim.status.lower() != "pending":
-                accountant = Accountant.objects.get(employee=request.user)
-                Payments.objects.create(claim=claim, paid_by=accountant)
-
+            # if claim.payment_date and claim.status.lower() != "pending":
+            #     accountant = Accountant.objects.get(employee=request.user)
+            #     Payments.objects.create(claim=claim, paid_by=accountant)
 
             claim._current_user = request.user  
             claim.save()
