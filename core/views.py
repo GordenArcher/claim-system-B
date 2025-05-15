@@ -274,7 +274,6 @@ def logout(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
 
 
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def check_authentication(request):
@@ -288,8 +287,7 @@ def check_authentication(request):
         return Response({
             "status":"error",
             "message":f"{e}"
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
-
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 """ 
@@ -305,7 +303,6 @@ def upload_claims_from_excel(request):
             "status": "error", 
             "message": "No file uploaded"
             }, status=status.HTTP_400_BAD_REQUEST)
-    
 
 
     try:
@@ -327,8 +324,8 @@ def upload_claims_from_excel(request):
 
     for index, row in df.iterrows():
         try:
-            claim_number = row.get("Claim Request Number")
-            staff_number = row.get("Employee Number")
+            staff_number = str(row.get("Employee Number")).replace(".0", "").strip()
+            claim_number = str(row.get("Claim Request Number")).replace(".0", "").strip()
             full_name = row.get("Employee Name")
             date = row.get("Posting Date")
             claim_reason = row.get("Claim Reason")
