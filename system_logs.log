@@ -1,0 +1,19 @@
+[2025-05-09 14:00:12] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-09 14:00:12] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-09 14:00:12] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-09 14:00:12] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-09 14:00:12] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-09 14:00:12] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-09 14:00:12] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-09 14:00:12] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-09 14:00:15] WARNING | django.request | log | Not Found: /favicon.ico
+[2025-05-09 14:00:15] WARNING | django.server | basehttp | "GET /favicon.ico HTTP/1.1" 404 2537
+[2025-05-09 14:00:25] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-05-09 14:00:25.031294+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-05-09 14:00:25] WARNING | django.request | log | Not Found: /admin/paulinaBE/config/
+[2025-05-09 14:00:25] WARNING | django.server | basehttp | "GET /admin/paulinaBE/config/ HTTP/1.1" 404 6727
+[2025-05-09 14:00:35] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-05-09 14:00:35] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-05-09 14:00:43] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-05-09 14:00:43] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-05-09 14:00:49] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-05-09 14:00:49] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82

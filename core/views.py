@@ -327,15 +327,14 @@ def upload_claims_from_excel(request):
 
     for index, row in df.iterrows():
         try:
-            full_name = row.get("full_name")
-            date = row.get("posting_date")
-            phone_number = row.get("phone_number")
-            staff_number = row.get("employee_number")
-            claim_status = row.get("status", "pending")
-            claim_number = row.get("request_number")
-            claim_amount = row.get("claim_amount")
-            claim_reason = row.get("claim_reason")
-            paid_at = row.get("payment_date")
+            full_name = row.get("Employee Name")
+            date = row.get("Posting Date")
+            phone_number = row.get("phone_number") or None
+            staff_number = row.get("Employee Number")
+            claim_number = row.get("Claim Request Number")
+            claim_amount = row.get("Claim Amount")
+            claim_reason = row.get("Claim Reason")
+            paid_at = row.get("Payment Date")
 
             if not all([full_name, date, phone_number, staff_number, claim_number, claim_amount, claim_reason]):
                 errors.append({"row": index + 2, "error": "Missing required fields"})
@@ -349,10 +348,10 @@ def upload_claims_from_excel(request):
                 full_name=full_name,
                 staff_number=staff_number,
                 claim_number=claim_number,
-                phone_number=phone_number,
+                phone_number=phone_number or None,
                 amount=claim_amount,
                 claim_reason=claim_reason,
-                status=claim_status,
+                status="pending",
                 created_at=parse_date(date),
                 payment_date=parse_date(paid_at),
             )
@@ -579,11 +578,6 @@ def pay_claim(request, claim_number):
         
         if claim and claim.phone_number and claim.staff_number:
             staff_phone = claim.phone_number
-        else:
-            return Response({
-                "status": "error", 
-                "message": "Phone number not found for this claim."
-            },status=status.HTTP_400_BAD_REQUEST)
         
         claim.status = "paid"
         claim.payment_date = timezone.now()
@@ -596,19 +590,21 @@ def pay_claim(request, claim_number):
         payment.save()
         
         # Send SMS to the Staff
-        staff_message = (
+        if staff_phone:
+            staff_message = (
             f"Hello {claim.full_name}, your claim #{claim_number} for Ghc{claim.amount} has been payed "
             f"and payed by {accountant.employee.username}."
             f"Payed on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
-        )
-        send_sms(staff_phone, staff_message)
+            )
+            send_sms(staff_phone, staff_message)
+
 
         # Send SMS to the accountant
         if accountant and accountant.phone_number:
             accountant_message = (
                 f"Payment Notification: Ghc{claim.amount} made for {claim.full_name} "
                 f"(Claim #{claim_number}, Staff Contact: {staff_phone}). "
-                f"Processed by {accountant.employee.username} on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
+                f"payment made by {accountant.employee.username} on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
             )
             send_sms(accountant.phone_number, accountant_message)
         
@@ -1074,7 +1070,7 @@ def get_logger():
         filename=log_path,
         when='midnight',
         interval=1,
-        backupCount=7  # Keep logs for 7 days
+        backupCount=7 
     )
     handler.suffix = "%Y-%m-%d"
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -1102,7 +1098,7 @@ def read_log_file(log_file_path, filter_func, limit=100):
             logs = []
             for line in (f.readlines()[-500:])[::-1]:
                 try:
-                    log_entry = json.loads(line)  # Parse the JSON log entry
+                    log_entry = json.loads(line) 
                     if filter_func(log_entry):
                         logs.append(log_entry)
                         if len(logs) == limit:
@@ -1114,7 +1110,6 @@ def read_log_file(log_file_path, filter_func, limit=100):
     except (IOError, PermissionError) as e:
         logger.error(f"Error reading log file: {e}")
         return []
-
 
 
 
