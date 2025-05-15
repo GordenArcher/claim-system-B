@@ -350,13 +350,8 @@ def upload_claims_from_excel(request):
                 amount=claim_amount,
                 claim_reason=claim_reason,
                 status="pending",
-                created_at=parse_date(date),
-                payment_date=None,
+                created_at=date,
             )
-
-            # if claim.payment_date and claim.status.lower() != "pending":
-            #     accountant = Accountant.objects.get(employee=request.user)
-            #     Payments.objects.create(claim=claim, paid_by=accountant)
 
             claim._current_user = request.user  
             claim.save()
@@ -374,18 +369,6 @@ def upload_claims_from_excel(request):
         "duplicates": duplicates,
         "errors": errors
     }, status=status.HTTP_201_CREATED)
-
-
-def parse_date(value):
-    if pd.isnull(value):
-        return None
-    if isinstance(value, datetime):
-        return value
-    try:
-        return pd.to_datetime(value)
-    except:
-        return None
-    
 
 
 @api_view(["GET"])
