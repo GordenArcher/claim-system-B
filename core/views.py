@@ -338,6 +338,7 @@ def upload_claims_from_excel(request):
 
             if not all([full_name, date, phone_number, staff_number, claim_number, claim_amount, claim_reason]):
                 errors.append({"row": index + 2, "error": "Missing required fields"})
+                Response({"error":errors})
                 continue
 
             if Claim.objects.filter(claim_number=claim_number).exists():
