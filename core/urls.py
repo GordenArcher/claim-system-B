@@ -34,4 +34,6 @@ urlpatterns = [
     path("system_audits/", views.get_audits),
     path("claim_processed/", views.get_top_claim_processors),
     path("get_query-dataa/", views.get_data_based_on_month),
+    path("qr-code/", views.generate_qr),
+    path("staff/save_phone/", views.save_phone),
 ]

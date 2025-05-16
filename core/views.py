@@ -21,7 +21,11 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 import requests
 from datetime import datetime, timedelta
 import pandas as pd
+import re
 import io
+import qrcode
+import base64
+from io import BytesIO
 from django.core.files import File
 from django.db.models import Sum
 from django.db.models.functions import TruncMonth
@@ -124,7 +128,6 @@ def login(request):
                     user = None
             except get_user_model().DoesNotExist:
                 user = None
-
 
         if user:
             # Generate JWT tokens
@@ -438,9 +441,8 @@ def get_recent_claims(request):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@api_view(['POST']) 
-@permission_classes([IsAuthenticated])
-def verify_staff_claim(request): 
+@api_view(['POST'])
+def verify_staff_claim(request):
     try:
         query_data = request.data.get("claim_data")
 
@@ -481,6 +483,51 @@ def verify_staff_claim(request):
             "message": str(e)
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+@api_view(['POST'])
+def save_phone(request):
+    try:
+        phone_number = request.data.get("phone_number")
+        employee_number = request.data.get("staff_number")
+
+        if not phone_number or not employee_number:
+            return Response({
+                "status":"error",
+                "message":"Please phone number and employee number are required"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+
+        pattern = r"^(?:\+233|233|0)(24|25|26|27|28|50|51|52|53|54|55|56|57|58|59)\d{7}$"
+        if not re.match(pattern, phone_number):
+            return Response({
+                "status": "error",
+                "message": "Invalid Ghanaian phone number format."
+            }, status=status.HTTP_400_BAD_REQUEST)     
+
+        try:
+            employee = Claim.objects.get(staff_number=employee_number)
+        except Claim.DoesNotExist:
+            return Response({
+            "status": "error",
+            "message": "Employee Number does not exist."
+        }, status=status.HTTP_404_NOT_FOUND)
+
+        employee.phone_number = phone_number
+        employee.save()
+
+        return Response({
+            "status":"success",
+            "message":f"{phone_number} has been saved for employee {employee_number}."
+        }, status=status.HTTP_200_OK)  
+
+
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+
 """ 
 This function deletes a claim
 """
@@ -517,8 +564,8 @@ HUTBUL_SENDER_ID = "glcxnwfw"
 def send_sms(phone_number, message):
     url = "https://smsc.hubtel.com/v1/messages/send"
     params = {
-        "clientsecret": "tvjaurmu",
-        "clientid": "tquahyvu",
+        "clientsecret": "isgeozyv",
+        "clientid": "glcxnwfw",
         "from": "Claim",
         "to": phone_number,
         "content": message
@@ -1231,6 +1278,28 @@ def get_data_based_on_month(request):
                 'number_of_payments': number_of_payments,
             }
         }, status=status.HTTP_200_OK)
+    
+    except Exception as e:
+        return Response({
+            "status": "error",
+            "message": str(e)
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+@api_view(['GET'])
+def generate_qr(request):
+    try:
+        url = "https://claim-system-frontend-v1.vercel.app/staff/claim/verify/"
+        img = qrcode.make(url)
+        buffer = BytesIO()
+        img.save(buffer, format="PNG")
+        img_str = base64.b64encode(buffer.getvalue()).decode()
+
+        return Response({
+            "status": "success",
+            "qr_code_image": img_str
+        }, status=status.HTTP_201_CREATED)
     
     except Exception as e:
         return Response({

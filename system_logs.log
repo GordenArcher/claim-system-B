@@ -47,3 +47,609 @@
 [2025-05-15 13:37:51] INFO | core | signals | New Claim Creation: Request Number=CL-15654, Staff Number=5561, Amount=4268.86, Description=Fuel, Initial Status=pending, Timestamp=2025-04-18 00:00:00
 [2025-05-15 13:50:51] WARNING | django.request | log | Not Found: /favicon.ico
 [2025-05-15 13:50:51] WARNING | django.server | basehttp | "GET /favicon.ico HTTP/1.1" 404 2537
+[2025-05-15 16:47:46] WARNING | django.request | log | Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2025-05-15 16:47:46] WARNING | django.server | basehttp | "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2648
+[2025-05-15 17:48:49] INFO | core | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-05-15 17:48:49.607842+00:00, Session Duration=4h 16m 34s
+[2025-05-15 17:48:53] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 17:48:53] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 17:48:53] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 17:48:53] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 17:48:53] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 17:48:53] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 17:48:53] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 17:48:53] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:06:57] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:06:57] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:06:57] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:06:57] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:06:57] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:06:57] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:06:57] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:06:57] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:40:02] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:40:02] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:40:02] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:40:02] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:40:02] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:40:02] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:40:02] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:40:02] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:40:12] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-05-15 18:40:12.725741+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-05-15 18:40:23] WARNING | django.request | log | Forbidden: /api/v1/auth/login/
+[2025-05-15 18:40:23] WARNING | django.server | basehttp | "POST /api/v1/auth/login/ HTTP/1.1" 403 82
+[2025-05-15 18:43:09] INFO | core | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-05-15 18:43:09.493804+00:00, Session Duration=0h 2m 56s
+[2025-05-15 18:43:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:43:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:43:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:43:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:43:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:43:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:43:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:43:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:43:27] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:43:27] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:43:27] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:43:27] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:43:27] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:43:27] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:43:27] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:43:27] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:46:32] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:46:32] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:46:32] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:46:32] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:46:32] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:46:32] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:46:32] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:46:32] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:46:36] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:46:36] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:46:36] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:46:36] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:46:36] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:46:36] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:46:36] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:46:36] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:46:39] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:46:39] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 18:46:39] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:46:39] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 18:46:39] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:46:39] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 18:46:39] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 18:46:39] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 19:17:52] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 19:17:52] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 19:17:52] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 19:17:52] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 19:17:52] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 19:17:52] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 19:17:52] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 19:17:52] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:21:48] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:21:48] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:21:48] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:21:48] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:21:48] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:21:48] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:21:48] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:21:48] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:25:24] WARNING | django.request | log | Not Found: /favicon.ico
+[2025-05-15 22:25:24] WARNING | django.server | basehttp | "GET /favicon.ico HTTP/1.1" 404 2537
+[2025-05-15 22:25:38] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-05-15 22:25:38.548701+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-05-15 22:41:19] WARNING | django.request | log | Not Found: /api/v1/claim/verify/
+[2025-05-15 22:41:19] WARNING | django.server | basehttp | "POST /api/v1/claim/verify/ HTTP/1.1" 404 68
+[2025-05-15 22:41:25] WARNING | django.request | log | Not Found: /api/v1/claim/verify/
+[2025-05-15 22:41:25] WARNING | django.server | basehttp | "POST /api/v1/claim/verify/ HTTP/1.1" 404 68
+[2025-05-15 22:41:27] WARNING | django.request | log | Not Found: /api/v1/claim/verify/
+[2025-05-15 22:41:27] WARNING | django.server | basehttp | "POST /api/v1/claim/verify/ HTTP/1.1" 404 68
+[2025-05-15 22:41:42] WARNING | django.request | log | Not Found: /api/v1/claim/verify/
+[2025-05-15 22:41:42] WARNING | django.server | basehttp | "POST /api/v1/claim/verify/ HTTP/1.1" 404 68
+[2025-05-15 22:52:30] INFO | core | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-05-15 22:52:30.040178+00:00, Session Duration=0h 26m 51s
+[2025-05-15 22:52:31] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:52:31] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:52:31] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:52:31] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:52:31] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:52:31] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:52:31] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:52:31] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:52:33] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:52:33] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:52:33] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:52:33] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:52:33] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:52:33] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:52:33] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:52:33] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:52:49] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:52:49] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:52:49] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 22:52:49] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 22:52:49] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:52:49] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 22:52:49] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 22:52:49] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:11:34] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:11:34] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:11:34] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:11:34] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:11:34] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:11:34] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:11:34] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:11:34] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:12:14] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:12:14] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:12:14] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:12:14] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:12:14] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:12:14] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:12:14] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:12:14] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:12:22] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:12:22] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:12:22] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:12:22] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:12:22] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:12:22] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:12:22] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:12:22] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:12:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:12:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:12:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:12:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:12:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:12:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:12:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:12:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:13:23] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:13:23] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:13:23] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:13:23] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:13:23] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:13:23] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:13:23] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:13:23] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:14:35] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:14:35] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:14:35] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:14:35] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:14:35] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:14:35] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:14:35] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:14:35] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:14:35] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:14:35] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:14:35] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:14:35] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:14:35] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:14:35] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:14:35] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:14:35] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:14:39] WARNING | django.request | log | Not Found: /api/v1/claim/verify/
+[2025-05-15 23:14:39] WARNING | django.server | basehttp | "POST /api/v1/claim/verify/ HTTP/1.1" 404 68
+[2025-05-15 23:16:05] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:16:05] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:16:05] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:16:05] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:16:05] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:16:05] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:16:05] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:16:05] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:16:05] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:16:05] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:16:05] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:16:05] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:16:05] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:16:05] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:16:05] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:16:05] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:16:39] WARNING | django.request | log | Not Found: /api/v1/claim/verify/
+[2025-05-15 23:16:39] WARNING | django.server | basehttp | "POST /api/v1/claim/verify/ HTTP/1.1" 404 68
+[2025-05-15 23:17:25] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:17:25] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:17:25] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:17:25] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:17:25] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:17:25] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:17:25] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:17:25] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:20:34] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:20:34] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:20:34] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:20:34] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:20:34] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:20:34] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:20:34] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:20:34] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:23:51] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:23:51] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:23:51] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:23:51] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:23:51] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:23:51] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:23:51] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:23:51] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:23:52] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:23:52] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:23:52] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-15 23:23:52] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-15 23:23:52] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:23:52] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-15 23:23:52] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-15 23:23:52] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:04:17] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:04:17] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:04:18] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:04:18] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:04:18] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:04:18] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:04:18] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:04:18] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:04:19] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:04:19] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:04:19] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:04:19] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:04:19] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:04:19] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:04:19] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:04:19] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:27:31] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:27:31] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:27:31] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:27:31] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:27:31] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:27:31] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:27:31] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:27:31] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:27:32] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:27:32] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:27:32] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 00:27:32] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:27:32] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 00:27:32] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 00:27:32] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 00:27:32] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:46:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:46:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:46:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:46:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:46:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:46:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:46:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:46:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:48:55] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:48:55] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:48:55] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:48:55] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:48:55] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:48:55] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:48:55] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:48:55] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:48:56] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:48:56] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:48:56] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:48:56] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:48:56] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:48:56] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:48:56] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:48:56] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:49:36] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:49:36] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:49:36] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:49:37] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:49:37] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:49:37] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:49:37] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:49:37] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:49:37] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:49:37] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:49:37] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:49:37] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:49:37] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:49:37] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:49:37] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:49:37] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:10] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:10] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:10] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:10] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:10] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:10] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:10] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:10] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:16] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:16] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:16] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:16] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:16] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:16] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:16] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:16] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:21] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:22] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:22] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:22] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:22] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:22] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:22] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:22] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:33] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:33] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:33] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:33] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:33] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:33] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:33] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:33] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:38] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:38] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:38] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:38] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:38] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:38] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:38] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:38] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:55] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:55] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:50:55] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:55] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:55] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:50:55] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:50:55] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:50:55] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:51:09] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:51:09] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 01:51:09] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:51:09] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:51:09] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 01:51:09] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 01:51:09] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 01:51:09] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:01:51] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:01:51] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:01:51] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:01:51] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:01:51] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:01:51] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:01:51] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:01:51] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:02:10] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:02:10] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:02:10] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:02:10] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:02:11] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:02:11] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:02:11] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:02:11] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:02:54] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:02:54] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:02:54] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:02:54] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:02:54] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:02:54] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:02:54] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:02:54] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:03:03] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:03:03] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:03:03] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:03:03] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:03:03] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:03:03] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:03:03] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:03:03] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:03:06] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:03:06] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:03:06] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:03:06] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:03:06] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:03:06] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:03:06] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:03:06] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:20:15] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:20:15] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:20:15] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:20:15] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:20:15] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:20:15] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:20:15] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:20:15] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:20:25] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:20:25] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:20:25] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:20:25] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:20:25] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:20:25] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:20:25] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:20:25] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:01] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:01] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:01] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:01] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:01] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:01] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:01] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:01] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:41] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:41] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:41] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:41] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:41] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:41] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:41] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:41] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:53] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:53] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:53] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:53] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:53] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:53] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:53] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:53] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:57] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:57] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:57] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:57] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:57] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:57] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:57] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:57] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:57] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:57] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:22:57] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:57] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:57] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:22:57] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:22:57] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:22:57] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:25:49] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:25:49] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:25:49] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:25:50] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:25:50] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:25:50] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:25:50] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:25:50] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:25:50] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:25:50] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:25:50] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:25:50] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:25:50] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:25:50] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:25:50] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:25:50] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:31:17] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:31:17] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:31:17] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:31:17] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:31:17] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:31:17] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:31:17] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:31:17] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:32:59] WARNING | django.request | log | Bad Request: /api/v1/staff/save_phone/
+[2025-05-16 02:32:59] WARNING | django.server | basehttp | "POST /api/v1/staff/save_phone/ HTTP/1.1" 400 83
+[2025-05-16 02:33:11] WARNING | django.request | log | Bad Request: /api/v1/staff/save_phone/
+[2025-05-16 02:33:11] WARNING | django.server | basehttp | "POST /api/v1/staff/save_phone/ HTTP/1.1" 400 83
+[2025-05-16 02:35:02] ERROR | django.request | log | Internal Server Error: /api/v1/staff/save_phone/
+[2025-05-16 02:35:02] ERROR | django.server | basehttp | "POST /api/v1/staff/save_phone/ HTTP/1.1" 500 237
+[2025-05-16 02:36:13] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-05-16 02:36:13.847573+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-05-16 02:39:38] INFO | core | signals | User Logout: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Logout Timestamp=2025-05-16 02:39:38.533304+00:00, Session Duration=0h 3m 24s
+[2025-05-16 02:39:45] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:39:45] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:39:45] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:39:45] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:39:45] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:39:45] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:39:45] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:39:45] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:54:42] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:54:42] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:54:42] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:54:42] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:54:43] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:54:43] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:54:43] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:54:43] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:55:07] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:55:07] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:55:07] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:55:07] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:55:07] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:55:07] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:55:07] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:55:07] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:55:08] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:55:08] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:55:08] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:55:08] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:55:08] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:55:08] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:55:08] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:55:08] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:56:28] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:56:28] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:56:28] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:56:28] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:56:28] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:56:28] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:56:28] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:56:28] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:57:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:57:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:57:24] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:57:24] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:57:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:57:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:57:24] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:57:24] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:58:31] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:58:31] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:58:31] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:58:31] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:58:31] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:58:31] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:58:31] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:58:31] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:58:44] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:58:44] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:58:44] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:58:44] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:58:44] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:58:44] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:58:44] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:58:44] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:58:45] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:58:45] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:58:46] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 02:58:46] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 02:58:46] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:58:46] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 02:58:46] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 02:58:46] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 03:00:17] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 03:00:17] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 03:00:17] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 03:00:17] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 03:00:17] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 03:00:17] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 03:00:17] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 03:00:17] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 03:09:04] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 03:09:04] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 03:09:04] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 03:09:04] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 03:09:04] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 03:09:04] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 03:09:04] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 03:09:04] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 03:09:05] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 03:09:05] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 03:09:05] WARNING | django.request | log | Unauthorized: /api/v1/auth/isAuthenticated/
+[2025-05-16 03:09:05] WARNING | django.server | basehttp | "GET /api/v1/auth/isAuthenticated/ HTTP/1.1" 401 58
+[2025-05-16 03:09:05] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 03:09:05] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 03:09:05] ERROR | django.request | log | Internal Server Error: /api/v1/auth/refresh/
+[2025-05-16 03:09:05] ERROR | django.server | basehttp | "POST /api/v1/auth/refresh/ HTTP/1.1" 500 93
+[2025-05-16 03:09:16] INFO | core | signals | User Login: Username=admin, Email=archergorden@gmail.com, IP Address=127.0.0.1, Timestamp=2025-05-16 03:09:16.374601+00:00, Hostname=iamsk.local, OS=macOS-14.6.1-x86_64-i386-64bit-Mach-O
+[2025-05-16 03:14:37] INFO | core | signals | Claim Status Change: Claim Number=REQ1000, Staff Number=EMP200, Previous Status=pending, New Status=paid, Timestamp=2025-05-16 03:14:37.757074+00:00
+[2025-05-16 03:14:37] INFO | core | signals | New Payment Recording: Payment ID=115, Request Number=REQ1000, Staff Number=EMP200, Claim Owner=John Doe 0, Claim Paid By=admin, Claim Amount=100.00, Payment Timestamp=2025-05-16 03:14:37.787842+00:00
+[2025-05-16 03:14:37] ERROR | django.request | log | Internal Server Error: /api/v1/claim/staff/pay/REQ1000/
+[2025-05-16 03:14:37] ERROR | django.server | basehttp | "POST /api/v1/claim/staff/pay/REQ1000/ HTTP/1.1" 500 132
+[2025-05-16 03:15:12] INFO | core | signals | Claim Status Change: Claim Number=REQ1002, Staff Number=EMP202, Previous Status=pending, New Status=paid, Timestamp=2025-05-16 03:15:12.514696+00:00
+[2025-05-16 03:15:12] INFO | core | signals | New Payment Recording: Payment ID=116, Request Number=REQ1002, Staff Number=EMP202, Claim Owner=John Doe 2, Claim Paid By=admin, Claim Amount=120.00, Payment Timestamp=2025-05-16 03:15:12.553675+00:00
+[2025-05-16 03:15:13] INFO | communications | views | SMS Response: {'rate': 0, 'messageId': '2557e995-6b1b-47b9-93ee-304c848d3a8c', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:15:13] ERROR | communications | views | Failed to send SMS to 550000002. Response: {'rate': 0, 'messageId': '2557e995-6b1b-47b9-93ee-304c848d3a8c', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:15:13] INFO | communications | views | SMS Response: {'rate': 0, 'messageId': 'c8ff989b-d886-4719-958b-e0745899b505', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:15:13] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0, 'messageId': 'c8ff989b-d886-4719-958b-e0745899b505', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:15:44] INFO | core | signals | Claim Status Change: Claim Number=REQ1006, Staff Number=EMP206, Previous Status=pending, New Status=paid, Timestamp=2025-05-16 03:15:44.672485+00:00
+[2025-05-16 03:15:44] INFO | core | signals | New Payment Recording: Payment ID=117, Request Number=REQ1006, Staff Number=EMP206, Claim Owner=John Doe 6, Claim Paid By=admin, Claim Amount=160.00, Payment Timestamp=2025-05-16 03:15:44.684582+00:00
+[2025-05-16 03:15:45] INFO | communications | views | SMS Response: {'rate': 0, 'messageId': '62fbb40d-2302-4b21-91f6-b9c4d41250bf', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:15:45] ERROR | communications | views | Failed to send SMS to 550000006. Response: {'rate': 0, 'messageId': '62fbb40d-2302-4b21-91f6-b9c4d41250bf', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:15:46] INFO | communications | views | SMS Response: {'rate': 0, 'messageId': '61b03290-be24-44f6-86d3-f552d626895f', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:15:46] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0, 'messageId': '61b03290-be24-44f6-86d3-f552d626895f', 'status': 100, 'statusDescription': 'invalid api key credentials', 'networkId': None}
+[2025-05-16 03:22:51] INFO | core | signals | Claim Status Change: Claim Number=REQ1004, Staff Number=EMP204, Previous Status=pending, New Status=paid, Timestamp=2025-05-16 03:22:51.026839+00:00
+[2025-05-16 03:22:51] INFO | core | signals | New Payment Recording: Payment ID=118, Request Number=REQ1004, Staff Number=EMP204, Claim Owner=John Doe 4, Claim Paid By=admin, Claim Amount=140.00, Payment Timestamp=2025-05-16 03:22:51.053440+00:00
+[2025-05-16 03:22:54] INFO | communications | views | SMS Response: {'rate': 0.03, 'messageId': '860a5085-f0cd-406b-9603-d62f824a3513', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-05-16 03:22:54] ERROR | communications | views | Failed to send SMS to 0256458092. Response: {'rate': 0.03, 'messageId': '860a5085-f0cd-406b-9603-d62f824a3513', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-05-16 03:22:56] INFO | communications | views | SMS Response: {'rate': 0.03, 'messageId': '4dad1463-df51-4ccd-a06f-2cc4511160a9', 'status': 0, 'statusDescription': None, 'networkId': ''}
+[2025-05-16 03:22:56] ERROR | communications | views | Failed to send SMS to 0546214293. Response: {'rate': 0.03, 'messageId': '4dad1463-df51-4ccd-a06f-2cc4511160a9', 'status': 0, 'statusDescription': None, 'networkId': ''}
